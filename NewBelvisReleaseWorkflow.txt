@@ -1,0 +1,52 @@
+4.5 was master
+State: HEAD (master)  --> 4.6
+
+
+****************** For 4.5 ***********************************
+#backup the cluster folder (as cluster_4.5_Old)
+
+#Create new workspace for 4-5-x (download content from  \\belvis4-compile\htdocs\belvis\downloads\workspace)
+
+#clone the git repositories for belvisrepo and sharedrepo
+ $ git clone ak@git-srv.kisters.de:/data1/gitrepos/belvisgroup/belvisrepo 4-8-x/belvisrepo
+ $ git clone ak@git-srv.kisters.de:/data1/gitrepos/belvisgroup/sharedrepo 4-8-x/sharedrepo
+
+#add gerrit as remote repository:
+ 
+   $ git remote add gerrit ssh://ak@belvis4-compile.kisters.de:29418/sharedrepo
+   $ git remote add gerrit ssh://ak@belvis4-compile.kisters.de:29418/belvisrepo 
+   
+#add change id hook
+  scp -p -P 29418  ak@belvis4-compile.kisters.de:hooks/commit-msg .git/hooks/
+ 
+
+#Swith to 4.5 branch from master!!!
+ $ git checkout Br_1_12x_x  (shared)
+ $ git checkout Br_4_8_x   (belvisrepo)
+ 
+ fetch and rebase
+ 
+ compile with maven sharedrepo and belvisrepo			  
+ 
+#open eclipse wit 4-5-x workspace, check if all settings are ok (maven, check style etc.)
+ 			  
+ Set the target for belvisrepo and reload it
+ Refresh and compile the workspace (CTRL-B)
+
+# copy the old tsm-dispatcher-custom.properties form old 4.5 to new 4.5 cluster
+ tsm-dispatcher-default.properties is now cluster\dcserver\server_tsmdispatcher\configuration\dcsmgr-dispatcher-default.properties
+ dcsmgr-dispatcher-default.properties --> dcsmgr-dispatcher-custom.properties
+
+ migrate dispatcher database:
+   in belvisrepo/cluster/tsm/bin
+          perl tsm-dispatcher.pl database migrate
+		  perl tsm-dispatcher.pl systemdata importAll
+		  
+modify the BATCH file to start the jproccontroller		  
+
+******************** For 4.6 (MASTER) ************
+
+Create the dispatcher database and tenant for 4.6
+
+import the shared.settings.win32 as existing maven project and check it in the run configurations
+

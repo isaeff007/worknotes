@@ -1,0 +1,340 @@
+# show the configuration
+git  config --list
+
+#get the new sources:
+   mvn clean install -PwithExternalModules
+   mvn clean install -U -PwithExternalModules
+   
+   do not forget:
+   
+   
+   cluster/tsm/bin:  perl configureProperties.pl --port=50000  (4.7)
+   cluster/tsm/bin:  perl configureProperties.pl --port=30000  (4.8)
+   cluster/tsm/bin:  perl configureProperties.pl --port=40000  (4.9)
+   
+   backup and restore tsm dispatcher settings 
+   cluster\dcserver\server_tsmdispatcher\configuration\dcsmgr-dispatcher-custom.properties
+   
+   migrate dispatcher database:
+   in belvisrepo/cluster/tsm/bin
+          perl tsm-dispatcher.pl database migrate
+		  perl tsm-dispatcher.pl systemdata importAll
+  
+# Show the checkstyle messages for maven (eclipse does not show all warnings
+  -PwithCodeAnalysis 
+ 
+#delete all new folders and files
+   git clean -f -d
+
+#restore the deleted folders/files from git repository
+   git reset --hard HEAD
+   git reset --hard origin/Br_4_8_x
+   
+# use "git reset HEAD <file>..." to unstage  
+
+   
+#clone the git repository for new branch (here for the new 4.3.x. )
+ ak@WS-AKANUSCHIN /d/WORK/scm/git
+ $ git clone ak@git-srv.kisters.de:/data1/gitrepos/belvisgroup/belvisrepo 4-8-x/belvisrepo
+ $ git clone ak@git-srv.kisters.de:/data1/gitrepos/belvisgroup/sharedrepo 4-8-x/sharedrepo
+ 
+ 
+#add remote branch (4.8) to 4.9 or 
+	
+	git remote add repo48  C:/scm/git/4-8-x/belvisrepo
+
+
+#Get the last source code from remote origin (instead of fetch % rebase):
+  git reset --hard origin/Br_Belvis_20111205_4_2_x
+  git reset --hard origin/master
+  
+#to replace the local files/directory even if there are no changes:
+  1. delete files/directory
+  2. git reset --hard HEAD
+  
+#show the commit history for current branch
+	git log --oneline
+	
+-------------------- #commit the several commit to one commit:--------------------------------------
+ A-B-C-D-E -->  A-BCD-E
+
+  You can simply give this command:
+  $ git rebase -i <sha1_for_A>
+
+   And then edit this:
+	pick B
+	pick C
+	pick D
+	pick E
+ to
+	pick B
+	squash C
+	squash D
+	pick E
+
+then ESC -->:wq
+in the next editor enter the combined commit message
+instead of ALL listed commit messages!
+
+---------------------#squash  two (or more) last commits to one --------------
+commit A
+commit B
+
+$ git reset --soft HEAD^1
+$ git commit --amend
+--------------------------------------------------------------------------------
+#rename the existing branch
+	git branch -m old_branch new_branch
+
+#show the config file with remote<->local branches mapping	
+	$ less .git/config
+
+----------------------------------------------------------------
+Workflow to update the current branch.
+
+* close the Eclipse
+$ git checkout Br_4.2.xxx
+$ git fetch
+$ gitk Br_4.2.xxx origin/Br_4.2.xxx
+$ git rebase origin/Br_4.2.xxx
+$ gitk Br_4.2.xxx origin/Br_4.2.xxx
+
+* start the Eclipse, wait for dependencies & indexes update.
+* refresh Workspace (F5)
+* Window->Preferences-->Plugin Dev.-->Target Platorm
+* activate & reload "Shared module target"
+* Build all (ctrl-B)
+* check the "Problems"
+*  by "could not resolve the XXXX" - get sure the XXXX.java exists
+   and refresh the according bundle explicit
+* clear  the "Problems" view
+* Window->Preferences-->Plugin Dev.-->Target Platform
+* activate & reload "BelVis target"
+* Build all (ctrl-B)
+* check the problems, 
+* Run -->Run Configurations -->Plug-ins-->Validate plug-ins
+* 
+
+
+----------------------------------------------------------------
+Workflow to push finished case: 
+repo42 is an alias for local Br_Belvis_4.2xxxx branch
+and is accessible from master
+
+feature branch case12345 is commited, compiled and tested. (we are in the case12345 branch)
+Hint:  do rebase on the feature branch, merge into local Br_4.2.xxx and push to origin/Br_4.2.xxx
+  change to local case12345 branch
+  $ git fetch 
+  $ git rebase origin/Br_4_8_x (rebase case branch)
+  $ git checkout Br_4_8_x
+  $ git rebase origin/Br_4_8_x  (rebase local 4.8 branch before merge!)
+  $ git merge --no-ff case12345 (currently:  $git merge case12345)
+  
+change to Successor branch  (another git fetchRepositorygit fetch!):
+  cd ..HEAD\belvisrepo
+  $ git fetch 
+  $ git rebase origin/Br_4_9_x
+  $ git fetch repo48 case12345:case12345
+  $ git merge --no-ff case12345
+  
+  change to local Br_4.9.x
+  $ git push gerrit Br_4_9_x
+  $ git push origin Br_4_9_x
+  
+  change to local master
+  $ git push origin master
+:
+Karl: Ich denke man könnte die Regel auch so auslegen:
+solange "git status" nach einem fetch sagt, dass ein fast-forward möglich ist, ist ein rebase ok,
+wenn hier aber etwas von diverged steht, dann ist Vorsicht geboten  
+  
+
+1. fetch and rebase from origin/Br_4.2xxxx
+2. merge the changes from feature branch to local 4.2 branch
+3. mvn clean install (belvisrepo/belvis)
+4. switch to master
+5. fetch and rebase from origin/master
+6. mvn clean install (belvisrepo/belvis)
+7. fetch & merge from repo42:
+   git fetch repo42 case12345:case12345
+   git merge --no-ff case12345   
+8. push  to remote 4.2
+   git push origin Br_4.2.x
+9. switch to master
+10. push to origin master cd 
+    git push origin master
+
+possible problems:	
+
+Wenn jemand auf dem server gepush hat: bekommt man beim Versuch zu pushen (git push origin master):
+"error: failed to push some refs to ak@git......"
+Dann:
+ $ git reset --hard HEAD^  (to remove the last local commit)
+ $ git fetch 
+ $ git rebase origin/master
+ $ git merge --no-ff case12345   (merge again from local repo)
+ $ git push origin master
+
+Wenn beim fetchen von repo42 auf Br_4_3_x:   rejected [non fast forward] kommt:
+  Wenn es nichts zu testen gibt, dann einfach alles aus einem branch mit git bash machen:
+    Br_42_x: checkout Br_4_3_x 
+	git rebase origin/Br_4_3_x
+	git merge --no-ff case12345
+	(dasselbe für "master" (checkout, fetch , rebase, merge))
+	...
+	git push origin Br_Belvis_20111205_4_2_x Br_4_3_x master   (push in all the branches)
+	
+	 
+---------------------------------DOWNMERGE------------------------
+Workflow for hotfix (copy the fix from 4.8.x (currently 4.8.040-SNAPSHOT--> 4.8.20 (and then 4.8.30)
+Push the commit from dev. branch to release branch
+	1. gitk& , copy the required commit ID 
+	2. checkout the release branch:  $ git checkout Br_4_2_02x
+	   check if the branch is up to date
+	   $ git fetch
+	   $ gitk Br_4_2_02x origin/Br_4_2_02x&
+	   if needed rebase ($ git rebase origin/Br_4_2_02x)
+	3. copy my commit to this releas branch:  $ git cherry-pick <commit-id>
+		(the diffs are merged to the local branch and to the workspace)
+	4. Compile the branch with maven (belvisrepo/belvis: mvn clean install)
+	5. Push the branch to remote origin (remotes/origin/Br_4_2_02x)
+	
+Workflow example for gerrit:
+  the case_999 was already merged to master branch <commit-id> , but postponed	it should
+  appear in 4_4_x Branch.
+  
+  $ git checkout Br_4_4_x
+  $ git fetch
+  $ git rebase
+  $ git checkout -b  case999_cherrypick
+  $ git cherry-pick <commit-id from master>
+    the diffs are merged to the local branch Br_4_4_x AND to the workspace
+  $ belvisrepo/belvis:  mvn clean install 	
+  $ git gui --> amend last commit --> change the message to "{case 999} picked from case999_xxx: fix the ..."
+  # push to gerrit
+  $ git push gerrit case999_cherrypick:refs/for/Br_4_4_x
+  
+     Note:  if
+	 error: unpack failed: error Missing tree d598e7e25860105969c4c2b275e6713dffd3b1fc
+	 then 
+	 $ git fetch, rebase origin/Br_4_4_x
+  
+  
+	
+-----------------------------------------------------------
+Mit TortoiseGit verknüpfen:
+
+$ less ~/.bashrcgit 
+export TERM=msys
+
+alias tlog="TortoiseProc.exe /command:log"
+alias tresolve='TortoiseProc.exe /command:resolve'	
+
+-----------------------------------------------------------
+To see the diffs between local and remote changes:
+You can do a "git fetch" at any time to update your local copy of a remote branch. 
+This operation never changes any of your own branches and is safe to do without changing your working copy. 
+So "fetch" is the global command and syncs the remotes/origin/Br_Belvis_20111205_4_2_x (server)  with origin/Br_Belvis_20111205_4_2_x (local mirror)
+but not the real branch "Br_Belvis_20111205_4_2_x"
+
+$ git fetch 
+$ gitk Br_Belvis_20111205_4_2_x   origin/Br_Belvis_20111205_4_2_x
+#see the changes and then sync the current branch (incl. workspace) with remote
+$git rebase origin/Br_Belvis_20111205_4_2_x
+
+-----------------------------------------------
+Resolve conflicts:
+rebase
+tresolve / context menu by tortoa
+edit conflicts in 3x Editor:
+ save 
+ marks as resolve
+ the commit dialog should pop up (with automessage)
+check the changes. 
+-----------------------------------------------------------------------------------------
+#Get the local repository from team member:
+$ git remote add matipp //ws-mtippmann1.oldenburg.kisters.de/git/4.2.x/belvisrepo
+$ git fetch matipp validationSupportMeteringpoint:validationSupportMeteringpoint
+
+---------------------------------------------------
+Um einen gemeinsamen commit zwischen zwei (oder mehr) Branches zu finden:
+
+git merge-base <commit1|Branch1> <commit2|Branch2> [...]
+
+-----------------------------------------------------------------------------------------------------------------
+# Merge the 4.5 case into 4.6 because of coflicts:
+
+$ git remote add repo45 D:/WORK/scm/git/4-5-x/belvisrepo
+$ git checkout -b case101212_make_PCG_property_editable_merge_for_46
+$ git fetch repo45 case101212_PCG:case101212_PCG
+$ git merge --no-ff case101212_PCG
+$ # conflicts are detected (...|MERGING)
+$ tresolve --> save, mark as resolved
+$ git gui --> commit
+
+---------------------------------------------------- GERRIT -----------------------------------------------------
+#Push to gerrit
+  add remote:
+   $ git remote add gerrit ssh://ak@belvis4-compile.kisters.de:29418/sharedrepo
+   $ git remote add gerrit ssh://ak@belvis4-compile.kisters.de:29418/belvisrepo
+   
+   B3:
+   $ git remote add gerrit ssh://ak@belvis3-compile.kisters.de:29418/b3main
+
+  #shared:
+  git push gerrit case89516git_new_method_for_TimeSeriesService:refs/for/Br_1_4x_x
+  git push gerrit case119485_Create_TimeRangeUtility:refs/for/master
+  
+  B3:
+  git push gerrit case119485_Create_TimeRangeUtility:refs/for/Br_3_19_x
+
+
+  #belvisrepo:
+  git push gerrit case89516_calculation_should_accept_the_TS_list:refs/for/Br_4_8_x
+  ------------------------------------------------------------------------------------------------------------
+  
+  Kurze info: Gerrit erlaubt auch "drafts". Wer also eine Implementation "vorschlagen" möchte, 
+  kann das auch über gerrit machen, sozusagen als Diskussionsobjekt:
+
+  $git push gerrit <branch>:refs/drafts/<target branch>
+  
+  Findet sich dann unter My > Drafts
+ --------------------------------------------------------------------------------------------------------------
+ 
+ # Get the branch from the coworker
+ 
+ shared:     git remote add  jkortas file:///ws-jkortas.schwerin.kisters.de/git2/sharedrepo 
+ belvisrepo: git remote add  jkortas file:///ws-jkortas.schwerin.kisters.de/git2/belvisrepo
+ 
+ shared:     git remote add  jkortas //192.168.141.184/git1/sharedrepo 
+ belvisrepo: git remote add  jkortas //192.168.141.184/git1/belvisrepo
+ 
+ //remove a reference to remote branch
+ git remote rm paul
+ 
+ 192.168.141.184tresl
+ 
+ ---------------------- rebase and resolve conflicts ------------------
+ make the new branch (to not destroy the case branch)
+ fetch and rebase with origin/Br_***
+ conflicts:  resolve with tourtuase (tresolve or menu resolve, save, mark as resolve) and if the tourtuase not continue automatically but all conflcits are reslolved
+ in the (...|REBASING) --> $git rebase --continue
+ 
+ in the (...|MERGE) --> $git gui --> commit the resolved conflict
+ 
+ 
+ ------------ get the remote branch avail. on the local branch --------------
+git fetch <remote> <rbranch>:<lbranch> 
+git checkout <lbranch>
+
+NOTE: That git fetch <remote> <refspec> is short for git fetch <remote> <refspec>: which would therefore do nothing,
+but git fetch <remote> <tag> is the same as git fetch <remote> <tag>:<tag> which should copy the remote <tag> locally.
+
+-------------------- git lab ---------------------------------
+git remote set-url origin git@gitlab-srv.kisters.de:belvisgroup/sharedrepo.git
+git remote set-url origin git@gitlab-srv.kisters.de:belvisgroup/belvisrepo.git
+
+-----------------------------------------------------------------
+also um z.b. herauszufinden ob alles aus der 4.7.x in der 4.9.x ist:
+git cherry <zielbranch> <quell branch>
+git cherry origin/Br_4_9_x origin/Br_4_7_x

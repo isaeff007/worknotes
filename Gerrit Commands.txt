@@ -1,0 +1,29 @@
+#generate key in C:\Users\ak.DOMKIS\.ssh
+ssh-keygen -t rsa -C "Alexander.Kanuschin@kisters.de"
+OR
+ssh-keygen -t rsa -C "ak@kisters.de"
+
+
+For all repositories do:
+#call from /belvisrepo and /sharedrepo directory for each BelVis version.
+git remote add gerrit ssh://alexander.kanuschin@belvis4-compile.kisters.de:29418/belvisrepo
+git remote add gerrit ssh://alexander.kanuschin@belvis4-compile.kisters.de:29418/sharedrepo
+
+# install the Gerrit change ID hook  for each repositroy for each version
+scp -p -P 29418  ak@belvis4-compile.kisters.de:hooks/commit-msg .git/hooks/ 
+scp -p -P 29418  ak@belvis3-compile.kisters.de:hooks/commit-msg .git/hooks/ 
+
+
+#to check the user name and public ssh by gerrit
+ssh -vv -p 29418 ak@belvis4-compile.kisters.de
+ssh -vv -p 29418 ak@belvis3-compile.kisters.de
+
+
+
+
+ ----------------------------------PROBLEMS:-------------------------------------------------
+if by "git push gerrit" -->  Permission denied (publickey).
+check the config file in .git folder
+Alexander.Kanuschin vs alexander.kanuschin and change the "alexander.kanuschin" to "ak"
+[remote "gerrit"]
+	url = ssh://ak@belvis4-compile.kisters.de:29418/belvisrepo
