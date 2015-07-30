@@ -143,6 +143,27 @@ change to Successor branch  (another git fetchRepositorygit fetch!):
   
   change to local master
   $ git push origin master
+  
+------------------- commit merged to 4.9.x  from 4.8.x , but have to be merged to 4.9.000 (downmerge)--------------------------------------
+  //get the original commit id (from 4.8.x) -->origcommitid
+  $git checkout Br_4_9_000
+  $git fetch 
+  $git rebase  
+  $git cherry-pick -x <origcommitid> (-x to add the info from which commit has been cherry picked)
+  //now merge the changes to 4.9.x to keep the branches synchronized (otherwise the next merge from 4.9.000 takes implicit my commit)
+  $git checkout Br_4_9_x  ( fetch & rebase)
+  $git merge Br_4_9_000   (yes, the whole branch! -->git will create a kind of empty commit because it knows (-x) the commit exists already)
+  
+  //and now the usual procedure
+  $git checkout Br_4_9_000
+  $git push gerrit Br_4_9_000
+  $git push origin Br_4_9_000
+  
+  $git checkout Br_4_9_x
+  $git push gerrit Br_4_9_x
+  $git push origin Br_4_9_x  
+  
+-----------------------------------------------------------------------------------------------------------  
 :
 Karl: Ich denke man könnte die Regel auch so auslegen:
 solange "git status" nach einem fetch sagt, dass ein fast-forward möglich ist, ist ein rebase ok,
