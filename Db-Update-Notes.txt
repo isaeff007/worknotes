@@ -17,10 +17,11 @@ create the reference defining the parent and child table (optional integrity rul
 After saving the PDM do not "mvn install" the belvis.db because , adapt the dbmodel.properties before
 
 Adapting the dbmodel.properties (for <modul>schema.version AND all.schema.version)
-Adapt the DBMigrationPlan (for referenced modules)
+Adapt the DBMigrationPlan (2 places! for referenced modules)
 belvis.db  --> mvn install 
 
 After the mvn install :
+ Check if there are exception in console output! (even if the status SUCCESSFULL)
 (2 new XMLs should be created)
   dbMDMSchema_9_01_storage.xml
   dbMDMSchema_9_01.xml
@@ -48,6 +49,17 @@ Problems:  no steps with new tables?  Check the TableSet and TablePrefix in exte
 		  to allow the migration from 4.7 to 4.8  (4_13 --> 5_07) :
 		    2 files (dbAnkafixSchema_4_13_storage.xml and dbAnkafixSchema_4_13.xml) should be manually copied from 4.7 to according 4.8 directory!
 			             C:\scm\git\4-8-x\belvisrepo\belvis\base\server\de.kisters.belvis.db\src\main\resources\xml\schema\ankafix
+						 
+			the PDM in 4.8 should be modified to get the same changes like  4.7	 (manually)
+			modify MigrationPlan with tree nodes
+			   5_07
+			   / \
+			  /  4_13
+			5_06 
+			 |
+			5_05 
+			then migrate : ankafix --> 5_06 --> 5_07
+			               ankafix --> 4_13 --> 5_07
  
  ---------- Content(common):---------------
 
@@ -75,7 +87,18 @@ To use the same tenant for next update, try to reset the changes and set the db 
 So, delete the created table/new column with constraints and set the SYSTEMPARAM_BELVIS.SPABELVIS_KEY --> DbSchemaVersion (5_06 --> 5_05)
 s. the screenshot or 
    http://confluence.kisters.de/pages/viewpage.action?pageId=19113376#Troubleshooting%28B4%29-Howtoreseterrorstateofanapplication-dbinTSM
-   
+
+------------------------- Add NOTNULL column to existing table---------
+search for:  ".ColumnNotNull +"
+s. AnkafixDbSchemaMig3_13to4_07   --> column: eampc_ats_assigned_ts
+in the step the 
+// part 2 table: e_af_mp_pricecalc
+            if (doExecute) {
+                dbh.sqlExecNoResult("update e_af_mp_pricecalc set eampc_ats_assigned_ts=eampc_mp_assigned_ts"); //$NON-NLS-1$
+                dbh.commit();
+            } else {
+                rtn += "update e_af_mp_pricecalc set eampc_ats_assigned_ts=eampc_mp_assigned_ts;\n"; //$NON-NLS-1$
+            }
 
 --------------------------   BRANCHING,  VERSIONING ----------
 example for belvisrepo 4.8:
@@ -92,7 +115,7 @@ example for belvisrepo 4.8:
  If 4.8 already extended --> S. developer handbook chapter 43. Shema creation migration.
  
 
-DbMigrationPlan.java dor all products!
+DbMigrationPlan.java for all products!
 	4.7        -->       4.8
  8.04 -> 8.05        9.00 --> 9.01
       \
@@ -117,5 +140,17 @@ Table should be modified after the review : it means the last dbAnkafixSchema_5_
    should be deleted (evt. all other referenced modules) and the de.kisters.belvis.db --> mvn install to create the new ones.!													   
  
 
---------------------  Create first the  Key and then Index (referencing the key) ----------------
-Man muss erst einen Key erstellen, dem man die Spalten hinzufuegt. Anschliessend kann man einen Index erstellen und  dann dort Irgendwo in den Registerkarten den zuvor definierten Key auswaehlen. Bingo
+--------------------  Create first the  Key and then Unique! Index (referencing the key) ----------------
+Man muss erst einen Key erstellen, dem man die Spalten hinzufuegt. Anschliessend kann man einen Unique Index erstellen und  dann dort Irgendwo in den Registerkarten den zuvor definierten Key auswaehlen. Bingo
+
+To Create the user def. index on an FK do not use the keys, just add the colum directly to the new index.
+preview should be
+create index EMETAV_CMPNY_IDX on E_METER_AV (
+   EVSBS_COMPANY_ID_L ASC
+);
+-----------------------------------------------ERROR:   The table is in the PDM but is not generated (f.e.  E_TS_MISSING)-----
+ check the de.kisters.belvis.db  console output even if the SUCCESSFULL:
+ 
+ Exception in thread "main" org.xml.sax.SAXParseException; systemId: file:/C:/scm/git/4-8-x/belvisrepo/belvis/base/server/de.kisters.belvis.db/src/main/resources/xml/schema/ankafix/dbAnkafixSchema_5_19.xml; lineNumber: 1523; columnNumber: 13; The content of element type "Index" is incomplete, it must match "(ColumnRef+,Description?)".
+ 
+ Because of this message the tabe is skipped and not not created 
