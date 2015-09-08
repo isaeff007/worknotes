@@ -18,7 +18,7 @@ git  config --list
    migrate dispatcher database:
    in belvisrepo/cluster/tsm/bin
           perl tsm-dispatcher.pl database migrate
-		  perl tsm-dispatcher.pl systemdata importAll
+		  perl tsm-dispatcher.pl systemdata importAllperl tsm-dispatcher.pl systemdata importAll
   
 # Show the checkstyle messages for maven (eclipse does not show all warnings
   -PwithCodeAnalysis 
@@ -267,7 +267,7 @@ $git rebase origin/Br_Belvis_20111205_4_2_x
 Resolve conflicts:
 rebase
 tresolve / context menu by tortoa
-edit conflicts in 3x Editor:
+edit conflicts in 3x Editor:git 
  save 
  marks as resolve
  the commit dialog should pop up (with automessage)
@@ -359,3 +359,15 @@ git remote set-url origin git@gitlab-srv.kisters.de:belvisgroup/belvisrepo.git
 also um z.b. herauszufinden ob alles aus der 4.7.x in der 4.9.x ist:
 git cherry <zielbranch> <quell branch>
 git cherry origin/Br_4_9_x origin/Br_4_7_x
+
+------------------------------- check if the origin & gerrit are synchronized ---------------
+if after 
+$git push gerrit Br_4_8_060  
+the error is displayed:
+remote: ERROR:  committer email address alexander.osterwald@kisters.de
+remote: ERROR:  does not match your user account.
+
+it means you are trying to push an commit which is nto in gerrit (aoster pushed to origin , but not to gerrit)
+if you forgot to push the commit to gerrit (and there are already another commits in origin) - you can push this special commit to gerrit branch:
+--------------- push a special commit to remote branch ----------------------------------------------
+git push gerrit e4efe1792837e05993b6ee78a4e47381ced72163:Br_4_8_060

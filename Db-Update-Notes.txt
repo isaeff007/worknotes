@@ -60,6 +60,17 @@ Problems:  no steps with new tables?  Check the TableSet and TablePrefix in exte
 			5_05 
 			then migrate : ankafix --> 5_06 --> 5_07
 			               ankafix --> 4_13 --> 5_07
+						   
+------ GIT to bring dummy commit from 4.8 to 4.9.010 AND 4.9.x if the changes in 4.9 are done with another commit-------
+$ git checkout Br_4_9_10
+$ git fetch repo48 case12345_48_dbupdate_branch:case12345_48_dbupdate_branch
+#and now to merge conflicts by maintaining only the changes from new 4.9. commit
+$ git merge -s ours case12345_48_dbupdate_branch
+$ git checkout Br_4_9_x
+
+#now merge the 4_9_10 to 4_9_x
+git merge Br_4_9_010 -s ours
+
  
  ---------- Content(common):---------------
 
