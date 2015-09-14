@@ -1,0 +1,63 @@
+Achtung:
+  Die PBDs in der RC_Erstellung Verz. müssen aktuell sein
+  Genau die werden für die Übersetzung benutzt und nicht die aus dem J-Verz. !!!
+  J dient nur als Referenz für die PBL-Liste!
+
+Translation:
+1.   D:\Projekte\BelVis\Sicher\NightlyBuild\subst
+     Subst für das neuste SP anpassen (*.bat Kopieren, umbenennen, modifizieren (V3.7. SP4 -> V3.7. SP5)
+
+2. Das Verz. für Erstellung erneuern:
+   Alle PBDs aus K: Strom, Gas PPM etc --> in ein Verz. legen (Strom als letzte))
+   E:\Projects\BelVis\backup\Development\ak\V3.7\RC_Erstellung
+      
+      rcbelvis*.txt + admin aus CVS holen (s. bookmark in Firefox)
+      Belvis' EXEn starten, RC generieren (common + ids x 1 bei Strom, special für alle Projekte)
+          add missing phrases
+          search changed entries
+	      export
+     Befor starting gas.exe --> remove "d_ess_fahrplan_cu_vol" from rcbelvisdw.txt  because of error "-4" by import.
+	 ids_balgroup_changed_part2 übersteigen wieder die zulässige maximale Länge von 1000 Zeichen
+
+       For IDS_:
+           u.U. kein "add missing phrases", sondern einfach "Export --> rcbelvis.txt".
+           auch wenn "0 Einträge wurden gefunden" --> Export !!!
+
+
+      rcbelvis*.txt + admin nach CVS einchecken.
+
+
+
+1. Bemerkung: ADMIN-Modul
+   Aus PB-Entw. Umgebung starten (keine EXE!).
+   J:\BelVis\admin--> belvis.ini + 3 rc*.txt admin Dateien.
+
+   BelVis.ini  sollte folgende BELVIS.INI Sektion haben:
+   language=GERMAN  ist sehr Wichtig! bei english sind die Spalte bei der Übersezung um 1 versetzt
+                    beim Vergleich "neu" vs "alt"! 
+
+[translation]
+language=GERMAN  
+;language=---
+language=ENGLISH
+tools=1
+transmode=1
+readfromfile=1
+rcobfile=rcadminob.txt
+rcdwfile=rcadmindw.txt
+rcfile=rcadmin.txt
+
+Bemerkung Nr 2 zu Admin: "general.pbl" kann (MUSS) aus Translation ausgeschlossen werden
+
+2. Bemerkung:
+   mark obsolete entries für den COMMON-Teil NUR mit der STROM.exe 
+   Durchführen
+
+   mark obsolete entries für den SPECIAL-Teil PFM NUR mit der PFMGAS durchführen (und nicht mit PFMSTROM)
+   Durchführen
+
+   OBSOLETE: nach dem Bereinigen unbedingt die Einträge aus dem http://bugzilla.kisters.de/show_bug.cgi?id=47898#c6
+   hinzufügen!
+   
+
+   
