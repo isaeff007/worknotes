@@ -18,7 +18,7 @@ git  config --list
    migrate dispatcher database:
    in belvisrepo/cluster/tsm/bin
           perl tsm-dispatcher.pl database migrate
-		  perl tsm-dispatcher.pl systemdata importAllperl tsm-dispatcher.pl systemdata importAll
+		  perl tsm-dispatcher.pl systemdata importAll
   
 # Show the checkstyle messages for maven (eclipse does not show all warnings
   -PwithCodeAnalysis 
@@ -116,7 +116,7 @@ $ gitk Br_4.2.xxx origin/Br_4.2.xxx
 * 
 
 
-----------------------------------------------------------------
+---------------------------------PUSH TO GERRIT / ORIGIN-------------------------------
 Workflow to push finished case: 
 repo42 is an alias for local Br_Belvis_4.2xxxx branch
 and is accessible from master

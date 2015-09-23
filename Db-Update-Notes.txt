@@ -16,7 +16,9 @@ create the reference defining the parent and child table (optional integrity rul
 
 After saving the PDM do not "mvn install" the belvis.db because , adapt the dbmodel.properties before
 
-Adapting the dbmodel.properties (for <modul>schema.version AND all.schema.version)
+Adapting the dbmodel.properties 
+   -for <modul>schema.version 
+   - AND all.schema.version
 Adapt the DBMigrationPlan (2 places! for referenced modules)
 belvis.db  --> mvn install 
 
@@ -35,6 +37,7 @@ Problems:  no steps with new tables?  Check the TableSet and TablePrefix in exte
 
    The created java class is commented, so activate the code and evt. set the default value for NOT NULL column.
    *.javX rename to *.java
+   add the copyright section
    replace the  //:  with ""  to remove the comments 
    Don' forget to internalize strings!  //$NON-NLS-1$
    Adapt the JavaDoc comment with update description, author with <br>
