@@ -1,0 +1,21 @@
+----------------------------   to debug karaf: --------------------------------------------------
+
+Set option to wait the connection with IntelliJ (optional, but required if you need a breakpoint at start)
+ edit karaf.bat (suspend=n --> suspend=y):
+ ......
+ set DEFAULT_JAVA_DEBUG_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005
+ ......
+
+Start in debug modus:
+ karaf\bin\karaf debug
+   ....at address 5005
+
+Set Debug configuration on InteliJ for "Remote§ 
+  - add new "remote" profile i.e. "Karaf"
+  - set Host: localhost/  Port 5005
+ 
+Set breakpoint
+
+NOTE: if karaf is stopped the debug connection goes lost.
+ 
+

@@ -8,9 +8,11 @@ git  config --list
    do not forget:
    
    
-   cluster/tsm/bin:  perl configureProperties.pl --port=50000  (4.7)
+   
    cluster/tsm/bin:  perl configureProperties.pl --port=30000  (4.8)
    cluster/tsm/bin:  perl configureProperties.pl --port=40000  (4.9)
+   cluster/tsm/bin:  perl configureProperties.pl --port=50000  (4.10)
+   cluster/tsm/bin:  perl configureProperties.pl --port=30000  (4.11)
    
    backup and restore tsm dispatcher settings 
    cluster\dcserver\server_tsmdispatcher\configuration\dcsmgr-dispatcher-custom.properties
@@ -39,9 +41,9 @@ git  config --list
  $ git clone ak@git-srv.kisters.de:/data1/gitrepos/belvisgroup/sharedrepo 4-8-x/sharedrepo
  
  
-#add remote branch (4.8) to 4.9 or 
+#add remote branch (4.9) to 4.10 
 	
-	git remote add repo48  C:/scm/git/4-8-x/belvisrepo
+	git remote add repo49  C:/scm/git/4-9-x/belvisrepo
 
 
 #Get the last source code from remote origin (instead of fetch % rebase):
@@ -76,12 +78,13 @@ then ESC -->:wq
 in the next editor enter the combined commit message
 instead of ALL listed commit messages!
 
----------------------#squash  two (or more) last commits to one --------------
+---------------------#squash  X  last commits to one --------------
 commit A
 commit B
+commit C
 
-$ git reset --soft HEAD^1
-$ git commit --amend
+$git reset --soft HEAD~3 &&
+ git commit
 --------------------------------------------------------------------------------
 #rename the existing branch
 	git branch -m old_branch new_branch
@@ -125,24 +128,26 @@ feature branch case12345 is commited, compiled and tested. (we are in the case12
 Hint:  do rebase on the feature branch, merge into local Br_4.2.xxx and push to origin/Br_4.2.xxx
   change to local case12345 branch
   $ git fetch 
-  $ git rebase origin/Br_4_8_x (rebase case branch)
-  $ git checkout Br_4_8_x
-  $ git rebase origin/Br_4_8_x  (rebase local 4.8 branch before merge!)
+  $ git rebase origin/Br_4_9_x (rebase case branch)
+  $ git checkout Br_4_9_x
+  $ git rebase origin/Br_4_9_x  (rebase local 4.9 branch before merge!)
   $ git merge --no-ff case12345 (currently:  $git merge case12345)
   
 change to Successor branch  (another git fetchRepositorygit fetch!):
   cd ..HEAD\belvisrepo
   $ git fetch 
-  $ git rebase origin/Br_4_9_x
-  $ git fetch repo48 case12345:case12345
+  $ git rebase origin/Br_4_10_x
+  $ git fetch repo49 case12345:case12345
   $ git merge --no-ff case12345
   
   change to local Br_4.9.x
   $ git push gerrit Br_4_9_x
   $ git push origin Br_4_9_x
   
-  change to local master
-  $ git push origin master
+  change to local Br_4.10.x
+  $ git push gerrit Br_4_10_x
+  $ git push origin Br_4_10_x
+  
   
 ------------------- commit merged to 4.9.x  from 4.8.x , but have to be merged to 4.9.000 (downmerge)--------------------------------------
   //get the original commit id (from 4.8.x) -->origcommitid
@@ -371,3 +376,17 @@ it means you are trying to push an commit which is nto in gerrit (aoster pushed 
 if you forgot to push the commit to gerrit (and there are already another commits in origin) - you can push this special commit to gerrit branch:
 --------------- push a special commit to remote branch ----------------------------------------------
 git push gerrit e4efe1792837e05993b6ee78a4e47381ced72163:Br_4_8_060
+
+------------------error: unpack failed: error Missing tree 1f39e031e508e2bdc42fe8259ce0b69e637f955a----------------------
+git push --no-thin solves the problem.
+
+--------------------------------------------------- ANKAFIX with Submodules ---------------
+#update all submodules (call from parent directory!)
+$git submodule foreach git fetch 
+$git submodule foreach git rebase origin/master
+
+-----------------------
+Klont man ein Repository mit Submodulen, werden diese von Git zunächst ignoriert und müssen explizit initialisiert werden:
+$ git submodule update --init
+
+------------------------

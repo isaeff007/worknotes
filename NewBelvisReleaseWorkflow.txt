@@ -1,15 +1,16 @@
 4.5 was master
 State: HEAD (master)  --> 4.6
 
-
+prepared eclipse 4.4.
+http://maven-srv.kisters.de:8080/nexus/service/local/artifact/maven/redirect?r=3rd-party-binary-distributions&g=org.eclipse.ide&a=kisters-eclipse-ide&v=4.4.0&e=zip
 ****************** For 4.5 ***********************************
 #backup the cluster folder (as cluster_4.5_Old)
 
 #Create new workspace for 4-5-x (download content from  \\belvis4-compile\htdocs\belvis\downloads\workspace)
 
 #clone the git repositories for belvisrepo and sharedrepo
- $ git clone ak@git-srv.kisters.de:/data1/gitrepos/belvisgroup/belvisrepo 4-8-x/belvisrepo
- $ git clone ak@git-srv.kisters.de:/data1/gitrepos/belvisgroup/sharedrepo 4-8-x/sharedrepo
+ $ git clone git@gitlab-srv.kisters.de:belvisgroup/belvisrepo.git --branch Br_4_11_x
+ $ git clone git@gitlab-srv.kisters.de:belvisgroup/sharedrepo.git --branch Br_1_18x_x
 
 #add gerrit as remote repository:
  
@@ -20,13 +21,21 @@ State: HEAD (master)  --> 4.6
   scp -p -P 29418  ak@belvis4-compile.kisters.de:hooks/commit-msg .git/hooks/
  
 
+#add remote branch (4.10) to 4.11 
+	
+	git remote add shared410  C:/scm/git/4-10-x/sharedrepo
+	git remote add repo410  C:/scm/git/4-10-x/belvisrepo
+
+ 
 #Swith to 4.5 branch from master!!!
  $ git checkout Br_1_12x_x  (shared)
  $ git checkout Br_4_8_x   (belvisrepo)
  
  fetch and rebase
  
- compile with maven sharedrepo and belvisrepo			  
+ compile with maven sharedrepo and belvisrepo		
+
+! Watch out if the .classpathes are changed, if so : revert it to avoid problems with not generated sources ! 
  
 #open eclipse wit 4-5-x workspace, check if all settings are ok (maven, check style etc.)
  			  
