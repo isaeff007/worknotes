@@ -1,3 +1,77 @@
+ ----------------------------stop the haning karaf process---------------------
+ $ pgrep karaf 
+ 686
+ $sudo kill -9 686
+ $sudo bash karaf start
+ 
+ ------------------------- map to local mvaen repository for bundle:watch command  ---------------------
+# show the installed feautures
+   feature:repo-list 
+#remove the prev. feature to be sure.
+   feature:repo-remove  mvn:de.kisters.energy/energy-offer-handling.deploy/0.0.2-SNAPSHOT/xml/features
+#or refresh the feature if the version is up to date
+   feature:repo-refresh mvn:de.kisters.energy/energy-offer-handling.deploy/0.3.0-SNAPSHOT/xml/features
+   
+ 
+ feature:repo-add cxf 3.1.4
+ feature:repo-add mvn:de.kisters.energy/energy-offer-handling.deploy/0.3.0-SNAPSHOT/xml/features
+ feature:install webconsole
+ feature:install energy-offer-handling-default
+ 
+ 
+
+-----------------------------ref system-------------------------------------
+YjY2N2Nm
+ssh karaf@energy-ref-01.kisters.de  -p 8101
+
+-----------------------------local ---------------------------
+
+ cd ../../opt/kisters/energy-offer-handling/karaf/etc
+ change to karaf and "sudo bash karaf start" or "sudo bash karaf debug"
+ 
+#save the configured files to mapped C:\scm\git\AnKaFix\energy-offer-handling\energy-offer-handling.provision.chef\saved_cfg
+karaf/etc$ sudo cp de.kisters.energy.*.cfg /vagrant/saved_cfg
+
+Entry-point:
+http://ws-akanuschin2.kisters.de:18181/ui/energy/offer/handling/index.html#/offering/basicdata
+
+----------------------------- update vagrant without destroy -----------------
+#stop VM
+vagrant halt
+
+#compile energy
+energy-offer-handling$ mvn clean install
+
+#save the cfg files
+sudo cp de.kisters.* /vagrant/saved_cfg/
+
+#delete the prev. dustribution
+cd ../../opt/kisters/localrepo
+sudo rm energy-offer-handling.deploy.karafdistribution.tar.gz
+cd ..
+sudo rm -rf karaf/
+
+#update the chef provisioning repository
+fetch & rebase
+
+#create new distibution
+vagrant provision
+
+
+
+ 
+
+
+
+-----------------------------install bundles --------------------------------
+ feature:repo-add cxf 3.1.4
+ feature:repo-add mvn:de.kisters.energy/energy-offer-handling.deploy/0.0.2-SNAPSHOT/xml/features
+ feature:install webconsole
+ bundle:watch *
+ feature:install energy-offer-handling-default
+ ------------------------------- diagnostic ---------------
+ feature:info   energy-offer-handling-kisrpc-bundles
+
 ----------------------------   to debug karaf: --------------------------------------------------
 
 Set option to wait the connection with IntelliJ (optional, but required if you need a breakpoint at start)
@@ -17,5 +91,33 @@ Set Debug configuration on InteliJ for "Remote§
 Set breakpoint
 
 NOTE: if karaf is stopped the debug connection goes lost.
- 
+
+To start:
+ karaf debug
+ start intelij remote debugger ("karaf" profile)
+ copy kararchive into deploy (to wait for thirdparties archive)
+ the breakpont should stop now 
+
+
+-------------- check style via maven ----------------------
+$ mvn checkstyle:checkstyle-aggregate
+     the results are to find in the "energy-offer-handling/target/site/checkstyle-aggregate.html"
+
+----------------------- adapt the karaf config after vygrant destroy:--------------------------------
+karaf/etc:
+sudo sed -i -- 's/executionenvironment=J2SE-1.7/executionenvironment=JavaSE-1.8,J2SE-1.7/g' config.properties
+
+----------------------Set the local DC-Server connection ----------------
+s/foo/bar/g'
+
+sudo sed -i 's/vm-belvis4-integration.kisters.de:38081/ws-akanuschin2.kisters.de:8081/g; s/tenant=ankafix/tenant=AKANKAFIX4TSM411X/g; s/belvis4Tenant=ankafix/belvis4Tenant=AKANKAFIX4TSM411X/g; s/=vm-belvis4-integration.kisters.de/=localhost/g; s/belvis4useSSL=1/belvis4useSSL=0/g'  *.sadp.belvis4.impl.cfg
+
+------------------ set to use local for keycloack ------------------------------
+#use here @ as delimeter instead of /
+sudo sed -i 's@servicebaseuri=http://energy-ref-01.kisters.de@servicebaseuri=http://ws-akanuschin2.kisters.de@' *.padp.rest.impl.cfg
+sudo sed -i 's@assistantservicebaseuri=http://ws-akanuschin2.kisters.de@assistantservicebaseuri=http://energy-ref-01.kisters.de@g' *.padp.rest.impl.cfg
+
+
+
+
 

@@ -1,0 +1,7 @@
+--------------------- SED -------------------
+ # use & as found pattern (paranthesis foreach found number):
+ echo 123 456 abc |sed 's/[0-9][0-9]*/(&)/g'
+ (123) (456) abc
+ 
+ #replace the kanuschin to sascha (in *.impl.cfg) and write the changed occurences into alexander.cfg 
+ sudo sed -i 's/kanuschin/sascha/w alexander.cfg' de.kisters.energy.offer.handling.padp.rest.impl.cfg
