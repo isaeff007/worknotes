@@ -1,0 +1,7 @@
+name 'sqlimport'
+maintainer 'The Authors'
+maintainer_email 'you@example.com'
+license 'all_rights'
+description 'Installs/Configures sqlimport'
+long_description 'Installs/Configures sqlimport'
+version '0.1.0'

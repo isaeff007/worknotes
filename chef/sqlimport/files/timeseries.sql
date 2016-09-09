@@ -1,0 +1,4 @@
+update AKBELVIS4TSM411LB.E_COMPUTER set E_COMPUTER.ECOMP_IP_S = 'akpc4';
+
+commit;
+

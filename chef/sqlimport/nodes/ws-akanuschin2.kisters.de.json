@@ -1,0 +1,1236 @@
+{
+  "name": "ws-akanuschin2.kisters.de",
+  "normal": {
+    "tags": [
+
+    ]
+  },
+  "default": {
+    "admin_dbuser": "system",
+    "admin_pwd": "manager",
+    "admin_host": "oracle-11g-srv-n",
+    "admin_instance": "BEL49",
+    "admin_port": "1521",
+    "enetgas": {
+      "dbuser": "AKBELVIS4TSM411LB",
+      "pwd": "12years"
+    },
+    "enetpower": {
+      "dbuser": "AKBELVIS4TSM411LB",
+      "pwd": "12years"
+    },
+    "enet": {
+      "files": "D:/WORK/chef/sqlimport/files/"
+    }
+  },
+  "automatic": {
+    "cpu": {
+      "0": {
+        "cores": 4,
+        "vendor_id": "GenuineIntel",
+        "family": "205",
+        "model": "15363",
+        "stepping": "3",
+        "physical_id": "CPU0",
+        "model_name": "Intel64 Family 6 Model 60 Stepping 3",
+        "mhz": "3401",
+        "cache_size": "1024 KB"
+      },
+      "total": 4,
+      "cores": 4,
+      "real": 1
+    },
+    "filesystem": {
+      "C:": {
+        "kb_size": 249691295,
+        "kb_available": 92374044,
+        "kb_used": 157317251,
+        "percent_used": 63,
+        "mount": "C:",
+        "fs_type": "ntfs",
+        "volume_name": ""
+      },
+      "D:": {
+        "kb_size": 500101541,
+        "kb_available": 381299929,
+        "kb_used": 118801612,
+        "percent_used": 23,
+        "mount": "D:",
+        "fs_type": "ntfs",
+        "volume_name": "Volume"
+      },
+      "G:": {
+        "kb_size": 0,
+        "kb_available": 0,
+        "kb_used": 0,
+        "percent_used": 0,
+        "mount": "G:",
+        "volume_name": null
+      }
+    },
+    "kernel": {
+      "os_info": {
+        "boot_device": "\\Device\\HarddiskVolume1",
+        "build_number": "9600",
+        "build_type": "Multiprocessor Free",
+        "caption": "Microsoft Windows 8.1 Enterprise",
+        "code_set": "1252",
+        "country_code": "49",
+        "creation_class_name": "Win32_OperatingSystem",
+        "cs_creation_class_name": "Win32_ComputerSystem",
+        "csd_version": null,
+        "cs_name": "WS-AKANUSCHIN2",
+        "current_time_zone": 120,
+        "data_execution_prevention_32_bit_applications": true,
+        "data_execution_prevention_available": true,
+        "data_execution_prevention_drivers": true,
+        "data_execution_prevention_support_policy": 2,
+        "debug": false,
+        "description": "",
+        "distributed": false,
+        "encryption_level": 256,
+        "foreground_application_boost": 2,
+        "free_physical_memory": "6157528",
+        "free_space_in_paging_files": "2124000",
+        "free_virtual_memory": "8595308",
+        "install_date": "20140808150643.000000+120",
+        "large_system_cache": null,
+        "last_boot_up_time": "20160826160627.494089+120",
+        "local_date_time": "20160909170301.995000+120",
+        "locale": "0407",
+        "manufacturer": "Microsoft Corporation",
+        "max_number_of_processes": -1,
+        "max_process_memory_size": "137438953344",
+        "mui_languages": [
+          "de-DE"
+        ],
+        "name": "Microsoft Windows 8.1 Enterprise|C:\\Windows|\\Device\\Harddisk0\\Partition2",
+        "number_of_licensed_users": 0,
+        "number_of_processes": 133,
+        "number_of_users": 5,
+        "operating_system_sku": 4,
+        "organization": "",
+        "os_architecture": "64-Bit",
+        "os_language": 1031,
+        "os_product_suite": 256,
+        "os_type": 18,
+        "other_type_description": null,
+        "pae_enabled": null,
+        "plus_product_id": null,
+        "plus_version_number": null,
+        "portable_operating_system": false,
+        "primary": true,
+        "product_type": 1,
+        "registered_user": "admin",
+        "serial_number": "00261-30000-00000-AA825",
+        "service_pack_major_version": 0,
+        "service_pack_minor_version": 0,
+        "size_stored_in_paging_files": "2490368",
+        "status": "OK",
+        "suite_mask": 272,
+        "system_device": "\\Device\\HarddiskVolume2",
+        "system_directory": "C:\\Windows\\system32",
+        "system_drive": "C:",
+        "total_swap_space_size": null,
+        "total_virtual_memory_size": "18912260",
+        "total_visible_memory_size": "16421892",
+        "version": "6.3.9600",
+        "windows_directory": "C:\\Windows"
+      },
+      "name": "Microsoft Windows 8.1 Enterprise",
+      "release": "6.3.9600",
+      "version": "6.3.9600  Build 9600",
+      "os": "WINNT",
+      "cs_info": {
+        "admin_password_status": 0,
+        "automatic_managed_pagefile": true,
+        "automatic_reset_boot_option": true,
+        "automatic_reset_capability": true,
+        "boot_option_on_limit": null,
+        "boot_option_on_watch_dog": null,
+        "boot_rom_supported": true,
+        "bootup_state": "Normal boot",
+        "caption": "WS-AKANUSCHIN2",
+        "chassis_bootup_state": 3,
+        "creation_class_name": "Win32_ComputerSystem",
+        "current_time_zone": 120,
+        "daylight_in_effect": true,
+        "description": "AT/AT COMPATIBLE",
+        "dns_host_name": "ws-akanuschin2",
+        "domain": "kisters.de",
+        "domain_role": 1,
+        "enable_daylight_savings_time": true,
+        "front_panel_reset_status": 0,
+        "hypervisor_present": false,
+        "infrared_supported": false,
+        "initial_load_info": null,
+        "install_date": null,
+        "keyboard_password_status": 0,
+        "last_load_info": null,
+        "manufacturer": "INTEL_",
+        "model": "DQ87PG__",
+        "name": "WS-AKANUSCHIN2",
+        "name_format": null,
+        "network_server_mode_enabled": true,
+        "number_of_logical_processors": 4,
+        "number_of_processors": 1,
+        "oem_string_array": [
+          "To Be Filled By O.E.M."
+        ],
+        "part_of_domain": true,
+        "pause_after_reset": "-1",
+        "pc_system_type": 1,
+        "pc_system_type_ex": 1,
+        "power_management_capabilities": null,
+        "power_management_supported": null,
+        "power_on_password_status": 0,
+        "power_state": 0,
+        "power_supply_state": 3,
+        "primary_owner_contact": null,
+        "primary_owner_name": "admin",
+        "reset_capability": 1,
+        "reset_count": -1,
+        "reset_limit": -1,
+        "roles": [
+          "LM_Workstation",
+          "LM_Server",
+          "NT",
+          "Potential_Browser",
+          "Master_Browser"
+        ],
+        "status": "OK",
+        "support_contact_description": null,
+        "system_startup_delay": null,
+        "system_startup_options": null,
+        "system_startup_setting": null,
+        "system_type": "x64-based PC",
+        "thermal_state": 3,
+        "total_physical_memory": "16816017408",
+        "user_name": "DOMKIS\\ak",
+        "wake_up_type": 6,
+        "workgroup": null
+      },
+      "machine": "x86_64"
+    },
+    "memory": {
+      "swap": {
+        "total": "2490368kB",
+        "free": "2124000kB"
+      },
+      "total": "16421892kB",
+      "free": "6157552kB"
+    },
+    "network": {
+      "interfaces": {
+        "0x5": {
+          "configuration": {
+            "arp_always_source_route": null,
+            "arp_use_ether_snap": null,
+            "caption": "[00000000] Intel(R) Ethernet Connection I217-LM",
+            "database_path": "%SystemRoot%\\System32\\drivers\\etc",
+            "dead_gw_detect_enabled": null,
+            "default_ip_gateway": [
+              "10.3.19.1"
+            ],
+            "default_tos": null,
+            "default_ttl": null,
+            "description": "Intel(R) Ethernet Connection I217-LM",
+            "dhcp_enabled": true,
+            "dhcp_lease_expires": "20160915160708.000000+120",
+            "dhcp_lease_obtained": "20160907160708.000000+120",
+            "dhcp_server": "192.168.52.4",
+            "dns_domain": "kisters.de",
+            "dns_domain_suffix_search_order": [
+              "kisters.de"
+            ],
+            "dns_enabled_for_wins_resolution": false,
+            "dns_host_name": "ws-akanuschin2",
+            "dns_server_search_order": [
+              "192.168.52.2",
+              "192.168.52.5"
+            ],
+            "domain_dns_registration_enabled": false,
+            "forward_buffer_memory": null,
+            "full_dns_registration_enabled": true,
+            "gateway_cost_metric": [
+              0
+            ],
+            "igmp_level": null,
+            "index": 0,
+            "interface_index": 5,
+            "ip_address": [
+              "10.3.19.50",
+              "fe80::6907:6253:1c21:9595"
+            ],
+            "ip_connection_metric": 10,
+            "ip_enabled": true,
+            "ip_filter_security_enabled": false,
+            "ip_port_security_enabled": null,
+            "ip_sec_permit_ip_protocols": [
+
+            ],
+            "ip_sec_permit_tcp_ports": [
+
+            ],
+            "ip_sec_permit_udp_ports": [
+
+            ],
+            "ip_subnet": [
+              "255.255.255.0",
+              "64"
+            ],
+            "ip_use_zero_broadcast": null,
+            "ipx_address": null,
+            "ipx_enabled": null,
+            "ipx_frame_type": null,
+            "ipx_media_type": null,
+            "ipx_network_number": null,
+            "ipx_virtual_net_number": null,
+            "keep_alive_interval": null,
+            "keep_alive_time": null,
+            "mac_address": "7C:05:07:0E:C5:5B",
+            "mtu": null,
+            "num_forward_packets": null,
+            "pmtubh_detect_enabled": null,
+            "pmtu_discovery_enabled": null,
+            "service_name": "e1dexpress",
+            "setting_id": "{92F5ECBC-7EE7-42A3-AAF5-0FFB7B5F78A4}",
+            "tcpip_netbios_options": 0,
+            "tcp_max_connect_retransmissions": null,
+            "tcp_max_data_retransmissions": null,
+            "tcp_num_connections": null,
+            "tcp_use_rfc1122_urgent_pointer": null,
+            "tcp_window_size": 64512,
+            "wins_enable_lm_hosts_lookup": true,
+            "wins_host_lookup_file": null,
+            "wins_primary_server": "192.168.52.2",
+            "wins_scope_id": "",
+            "wins_secondary_server": "192.168.52.5"
+          },
+          "instance": {
+            "adapter_type": "Ethernet 802.3",
+            "adapter_type_id": 0,
+            "auto_sense": null,
+            "availability": 3,
+            "caption": "[00000000] Intel(R) Ethernet Connection I217-LM",
+            "config_manager_error_code": 0,
+            "config_manager_user_config": false,
+            "creation_class_name": "Win32_NetworkAdapter",
+            "description": "Intel(R) Ethernet Connection I217-LM",
+            "device_id": "0",
+            "error_cleared": null,
+            "error_description": null,
+            "guid": "{92F5ECBC-7EE7-42A3-AAF5-0FFB7B5F78A4}",
+            "index": 0,
+            "install_date": null,
+            "installed": true,
+            "interface_index": 5,
+            "last_error_code": null,
+            "mac_address": "7C:05:07:0E:C5:5B",
+            "manufacturer": "Intel",
+            "max_number_controlled": 0,
+            "max_speed": null,
+            "name": "Intel(R) Ethernet Connection I217-LM",
+            "net_connection_id": "Ethernet",
+            "net_connection_status": 2,
+            "net_enabled": true,
+            "network_addresses": null,
+            "permanent_address": null,
+            "physical_adapter": true,
+            "pnp_device_id": "PCI\\VEN_8086&DEV_153A&SUBSYS_204C8086&REV_04\\3&11583659&1&C8",
+            "power_management_capabilities": null,
+            "power_management_supported": false,
+            "product_name": "Intel(R) Ethernet Connection I217-LM",
+            "service_name": "e1dexpress",
+            "speed": "1000000000",
+            "status": null,
+            "status_info": null,
+            "system_creation_class_name": "Win32_ComputerSystem",
+            "system_name": "WS-AKANUSCHIN2",
+            "time_of_last_reset": "20160826160627.494089+120"
+          },
+          "counters": {
+
+          },
+          "addresses": {
+            "10.3.19.50": {
+              "prefixlen": "24",
+              "netmask": "255.255.255.0",
+              "broadcast": "10.3.19.255",
+              "family": "inet"
+            },
+            "fe80::6907:6253:1c21:9595": {
+              "prefixlen": "64",
+              "family": "inet6",
+              "scope": "Link"
+            },
+            "7C:05:07:0E:C5:5B": {
+              "family": "lladdr"
+            }
+          },
+          "mtu": null,
+          "type": "Ethernet 802.3",
+          "arp": {
+
+          },
+          "encapsulation": "Ethernet"
+        },
+        "0x3": {
+          "configuration": {
+            "arp_always_source_route": null,
+            "arp_use_ether_snap": null,
+            "caption": "[00000003] VMware Virtual Ethernet Adapter for VMnet1",
+            "database_path": "%SystemRoot%\\System32\\drivers\\etc",
+            "dead_gw_detect_enabled": null,
+            "default_ip_gateway": null,
+            "default_tos": null,
+            "default_ttl": null,
+            "description": "VMware Virtual Ethernet Adapter for VMnet1",
+            "dhcp_enabled": false,
+            "dhcp_lease_expires": null,
+            "dhcp_lease_obtained": null,
+            "dhcp_server": null,
+            "dns_domain": null,
+            "dns_domain_suffix_search_order": [
+              "kisters.de"
+            ],
+            "dns_enabled_for_wins_resolution": false,
+            "dns_host_name": "ws-akanuschin2",
+            "dns_server_search_order": null,
+            "domain_dns_registration_enabled": false,
+            "forward_buffer_memory": null,
+            "full_dns_registration_enabled": true,
+            "gateway_cost_metric": null,
+            "igmp_level": null,
+            "index": 3,
+            "interface_index": 3,
+            "ip_address": [
+              "192.168.248.1",
+              "fe80::7d94:a76f:38a2:3bb5"
+            ],
+            "ip_connection_metric": 20,
+            "ip_enabled": true,
+            "ip_filter_security_enabled": false,
+            "ip_port_security_enabled": null,
+            "ip_sec_permit_ip_protocols": [
+
+            ],
+            "ip_sec_permit_tcp_ports": [
+
+            ],
+            "ip_sec_permit_udp_ports": [
+
+            ],
+            "ip_subnet": [
+              "255.255.255.0",
+              "64"
+            ],
+            "ip_use_zero_broadcast": null,
+            "ipx_address": null,
+            "ipx_enabled": null,
+            "ipx_frame_type": null,
+            "ipx_media_type": null,
+            "ipx_network_number": null,
+            "ipx_virtual_net_number": null,
+            "keep_alive_interval": null,
+            "keep_alive_time": null,
+            "mac_address": "00:50:56:C0:00:01",
+            "mtu": null,
+            "num_forward_packets": null,
+            "pmtubh_detect_enabled": null,
+            "pmtu_discovery_enabled": null,
+            "service_name": "VMnetAdapter",
+            "setting_id": "{1175CB9A-31A8-46EB-9A04-FECAA9BB29EF}",
+            "tcpip_netbios_options": 0,
+            "tcp_max_connect_retransmissions": null,
+            "tcp_max_data_retransmissions": null,
+            "tcp_num_connections": null,
+            "tcp_use_rfc1122_urgent_pointer": null,
+            "tcp_window_size": 64512,
+            "wins_enable_lm_hosts_lookup": true,
+            "wins_host_lookup_file": null,
+            "wins_primary_server": null,
+            "wins_scope_id": "",
+            "wins_secondary_server": null
+          },
+          "instance": {
+            "adapter_type": "Ethernet 802.3",
+            "adapter_type_id": 0,
+            "auto_sense": null,
+            "availability": 3,
+            "caption": "[00000003] VMware Virtual Ethernet Adapter for VMnet1",
+            "config_manager_error_code": 0,
+            "config_manager_user_config": false,
+            "creation_class_name": "Win32_NetworkAdapter",
+            "description": "VMware Virtual Ethernet Adapter for VMnet1",
+            "device_id": "3",
+            "error_cleared": null,
+            "error_description": null,
+            "guid": "{1175CB9A-31A8-46EB-9A04-FECAA9BB29EF}",
+            "index": 3,
+            "install_date": null,
+            "installed": true,
+            "interface_index": 3,
+            "last_error_code": null,
+            "mac_address": "00:50:56:C0:00:01",
+            "manufacturer": "VMware, Inc.",
+            "max_number_controlled": 0,
+            "max_speed": null,
+            "name": "VMware Virtual Ethernet Adapter for VMnet1",
+            "net_connection_id": "LAN-Verbindung",
+            "net_connection_status": 2,
+            "net_enabled": true,
+            "network_addresses": null,
+            "permanent_address": null,
+            "physical_adapter": true,
+            "pnp_device_id": "ROOT\\VMWARE\\0000",
+            "power_management_capabilities": null,
+            "power_management_supported": false,
+            "product_name": "VMware Virtual Ethernet Adapter for VMnet1",
+            "service_name": "VMnetAdapter",
+            "speed": "100000000",
+            "status": null,
+            "status_info": null,
+            "system_creation_class_name": "Win32_ComputerSystem",
+            "system_name": "WS-AKANUSCHIN2",
+            "time_of_last_reset": "20160826160627.494089+120"
+          },
+          "counters": {
+
+          },
+          "addresses": {
+            "192.168.248.1": {
+              "prefixlen": "24",
+              "netmask": "255.255.255.0",
+              "broadcast": "192.168.248.255",
+              "family": "inet"
+            },
+            "fe80::7d94:a76f:38a2:3bb5": {
+              "prefixlen": "64",
+              "family": "inet6",
+              "scope": "Link"
+            },
+            "00:50:56:C0:00:01": {
+              "family": "lladdr"
+            }
+          },
+          "mtu": null,
+          "type": "Ethernet 802.3",
+          "arp": {
+
+          },
+          "encapsulation": "Ethernet"
+        },
+        "0x4": {
+          "configuration": {
+            "arp_always_source_route": null,
+            "arp_use_ether_snap": null,
+            "caption": "[00000005] VMware Virtual Ethernet Adapter for VMnet8",
+            "database_path": "%SystemRoot%\\System32\\drivers\\etc",
+            "dead_gw_detect_enabled": null,
+            "default_ip_gateway": null,
+            "default_tos": null,
+            "default_ttl": null,
+            "description": "VMware Virtual Ethernet Adapter for VMnet8",
+            "dhcp_enabled": false,
+            "dhcp_lease_expires": null,
+            "dhcp_lease_obtained": null,
+            "dhcp_server": null,
+            "dns_domain": null,
+            "dns_domain_suffix_search_order": [
+              "kisters.de"
+            ],
+            "dns_enabled_for_wins_resolution": false,
+            "dns_host_name": "ws-akanuschin2",
+            "dns_server_search_order": null,
+            "domain_dns_registration_enabled": false,
+            "forward_buffer_memory": null,
+            "full_dns_registration_enabled": true,
+            "gateway_cost_metric": null,
+            "igmp_level": null,
+            "index": 5,
+            "interface_index": 4,
+            "ip_address": [
+              "192.168.61.1",
+              "fe80::6050:be0c:c83a:6eb1"
+            ],
+            "ip_connection_metric": 20,
+            "ip_enabled": true,
+            "ip_filter_security_enabled": false,
+            "ip_port_security_enabled": null,
+            "ip_sec_permit_ip_protocols": [
+
+            ],
+            "ip_sec_permit_tcp_ports": [
+
+            ],
+            "ip_sec_permit_udp_ports": [
+
+            ],
+            "ip_subnet": [
+              "255.255.255.0",
+              "64"
+            ],
+            "ip_use_zero_broadcast": null,
+            "ipx_address": null,
+            "ipx_enabled": null,
+            "ipx_frame_type": null,
+            "ipx_media_type": null,
+            "ipx_network_number": null,
+            "ipx_virtual_net_number": null,
+            "keep_alive_interval": null,
+            "keep_alive_time": null,
+            "mac_address": "00:50:56:C0:00:08",
+            "mtu": null,
+            "num_forward_packets": null,
+            "pmtubh_detect_enabled": null,
+            "pmtu_discovery_enabled": null,
+            "service_name": "VMnetAdapter",
+            "setting_id": "{6224F82F-6C85-47F7-8B24-606FBE9D95ED}",
+            "tcpip_netbios_options": 0,
+            "tcp_max_connect_retransmissions": null,
+            "tcp_max_data_retransmissions": null,
+            "tcp_num_connections": null,
+            "tcp_use_rfc1122_urgent_pointer": null,
+            "tcp_window_size": 64512,
+            "wins_enable_lm_hosts_lookup": true,
+            "wins_host_lookup_file": null,
+            "wins_primary_server": null,
+            "wins_scope_id": "",
+            "wins_secondary_server": null
+          },
+          "instance": {
+            "adapter_type": "Ethernet 802.3",
+            "adapter_type_id": 0,
+            "auto_sense": null,
+            "availability": 3,
+            "caption": "[00000005] VMware Virtual Ethernet Adapter for VMnet8",
+            "config_manager_error_code": 0,
+            "config_manager_user_config": false,
+            "creation_class_name": "Win32_NetworkAdapter",
+            "description": "VMware Virtual Ethernet Adapter for VMnet8",
+            "device_id": "5",
+            "error_cleared": null,
+            "error_description": null,
+            "guid": "{6224F82F-6C85-47F7-8B24-606FBE9D95ED}",
+            "index": 5,
+            "install_date": null,
+            "installed": true,
+            "interface_index": 4,
+            "last_error_code": null,
+            "mac_address": "00:50:56:C0:00:08",
+            "manufacturer": "VMware, Inc.",
+            "max_number_controlled": 0,
+            "max_speed": null,
+            "name": "VMware Virtual Ethernet Adapter for VMnet8",
+            "net_connection_id": "LAN-Verbindung 2",
+            "net_connection_status": 2,
+            "net_enabled": true,
+            "network_addresses": null,
+            "permanent_address": null,
+            "physical_adapter": true,
+            "pnp_device_id": "ROOT\\VMWARE\\0001",
+            "power_management_capabilities": null,
+            "power_management_supported": false,
+            "product_name": "VMware Virtual Ethernet Adapter for VMnet8",
+            "service_name": "VMnetAdapter",
+            "speed": "100000000",
+            "status": null,
+            "status_info": null,
+            "system_creation_class_name": "Win32_ComputerSystem",
+            "system_name": "WS-AKANUSCHIN2",
+            "time_of_last_reset": "20160826160627.494089+120"
+          },
+          "counters": {
+
+          },
+          "addresses": {
+            "192.168.61.1": {
+              "prefixlen": "24",
+              "netmask": "255.255.255.0",
+              "broadcast": "192.168.61.255",
+              "family": "inet"
+            },
+            "fe80::6050:be0c:c83a:6eb1": {
+              "prefixlen": "64",
+              "family": "inet6",
+              "scope": "Link"
+            },
+            "00:50:56:C0:00:08": {
+              "family": "lladdr"
+            }
+          },
+          "mtu": null,
+          "type": "Ethernet 802.3",
+          "arp": {
+
+          },
+          "encapsulation": "Ethernet"
+        },
+        "0x19": {
+          "configuration": {
+            "arp_always_source_route": null,
+            "arp_use_ether_snap": null,
+            "caption": "[00000006] VirtualBox Host-Only Ethernet Adapter",
+            "database_path": "%SystemRoot%\\System32\\drivers\\etc",
+            "dead_gw_detect_enabled": null,
+            "default_ip_gateway": null,
+            "default_tos": null,
+            "default_ttl": null,
+            "description": "VirtualBox Host-Only Ethernet Adapter #3",
+            "dhcp_enabled": false,
+            "dhcp_lease_expires": null,
+            "dhcp_lease_obtained": null,
+            "dhcp_server": null,
+            "dns_domain": null,
+            "dns_domain_suffix_search_order": [
+              "kisters.de"
+            ],
+            "dns_enabled_for_wins_resolution": false,
+            "dns_host_name": "ws-akanuschin2",
+            "dns_server_search_order": null,
+            "domain_dns_registration_enabled": false,
+            "forward_buffer_memory": null,
+            "full_dns_registration_enabled": true,
+            "gateway_cost_metric": null,
+            "igmp_level": null,
+            "index": 6,
+            "interface_index": 25,
+            "ip_address": [
+              "192.168.33.1",
+              "fe80::391f:1d58:9de0:2a07"
+            ],
+            "ip_connection_metric": 10,
+            "ip_enabled": true,
+            "ip_filter_security_enabled": false,
+            "ip_port_security_enabled": null,
+            "ip_sec_permit_ip_protocols": [
+
+            ],
+            "ip_sec_permit_tcp_ports": [
+
+            ],
+            "ip_sec_permit_udp_ports": [
+
+            ],
+            "ip_subnet": [
+              "255.255.255.0",
+              "64"
+            ],
+            "ip_use_zero_broadcast": null,
+            "ipx_address": null,
+            "ipx_enabled": null,
+            "ipx_frame_type": null,
+            "ipx_media_type": null,
+            "ipx_network_number": null,
+            "ipx_virtual_net_number": null,
+            "keep_alive_interval": null,
+            "keep_alive_time": null,
+            "mac_address": "0A:00:27:00:00:00",
+            "mtu": null,
+            "num_forward_packets": null,
+            "pmtubh_detect_enabled": null,
+            "pmtu_discovery_enabled": null,
+            "service_name": "VBoxNetAdp",
+            "setting_id": "{7221F1EF-A954-4CF5-840B-FD2EFA657718}",
+            "tcpip_netbios_options": 0,
+            "tcp_max_connect_retransmissions": null,
+            "tcp_max_data_retransmissions": null,
+            "tcp_num_connections": null,
+            "tcp_use_rfc1122_urgent_pointer": null,
+            "tcp_window_size": 64512,
+            "wins_enable_lm_hosts_lookup": true,
+            "wins_host_lookup_file": null,
+            "wins_primary_server": null,
+            "wins_scope_id": "",
+            "wins_secondary_server": null
+          },
+          "instance": {
+            "adapter_type": "Ethernet 802.3",
+            "adapter_type_id": 0,
+            "auto_sense": null,
+            "availability": 3,
+            "caption": "[00000006] VirtualBox Host-Only Ethernet Adapter",
+            "config_manager_error_code": 0,
+            "config_manager_user_config": false,
+            "creation_class_name": "Win32_NetworkAdapter",
+            "description": "VirtualBox Host-Only Ethernet Adapter",
+            "device_id": "6",
+            "error_cleared": null,
+            "error_description": null,
+            "guid": "{7221F1EF-A954-4CF5-840B-FD2EFA657718}",
+            "index": 6,
+            "install_date": null,
+            "installed": true,
+            "interface_index": 25,
+            "last_error_code": null,
+            "mac_address": "0A:00:27:00:00:00",
+            "manufacturer": "Oracle Corporation",
+            "max_number_controlled": 0,
+            "max_speed": null,
+            "name": "VirtualBox Host-Only Ethernet Adapter #3",
+            "net_connection_id": "VirtualBox Host-Only Network #3",
+            "net_connection_status": 2,
+            "net_enabled": true,
+            "network_addresses": null,
+            "permanent_address": null,
+            "physical_adapter": true,
+            "pnp_device_id": "ROOT\\NET\\0002",
+            "power_management_capabilities": null,
+            "power_management_supported": false,
+            "product_name": "VirtualBox Host-Only Ethernet Adapter",
+            "service_name": "VBoxNetAdp",
+            "speed": "1000000000",
+            "status": null,
+            "status_info": null,
+            "system_creation_class_name": "Win32_ComputerSystem",
+            "system_name": "WS-AKANUSCHIN2",
+            "time_of_last_reset": "20160826160627.494089+120"
+          },
+          "counters": {
+
+          },
+          "addresses": {
+            "192.168.33.1": {
+              "prefixlen": "24",
+              "netmask": "255.255.255.0",
+              "broadcast": "192.168.33.255",
+              "family": "inet"
+            },
+            "fe80::391f:1d58:9de0:2a07": {
+              "prefixlen": "64",
+              "family": "inet6",
+              "scope": "Link"
+            },
+            "0A:00:27:00:00:00": {
+              "family": "lladdr"
+            }
+          },
+          "mtu": null,
+          "type": "Ethernet 802.3",
+          "arp": {
+
+          },
+          "encapsulation": "Ethernet"
+        },
+        "0x9": {
+          "configuration": {
+            "arp_always_source_route": null,
+            "arp_use_ether_snap": null,
+            "caption": "[00000008] VirtualBox Host-Only Ethernet Adapter",
+            "database_path": "%SystemRoot%\\System32\\drivers\\etc",
+            "dead_gw_detect_enabled": null,
+            "default_ip_gateway": null,
+            "default_tos": null,
+            "default_ttl": null,
+            "description": "VirtualBox Host-Only Ethernet Adapter",
+            "dhcp_enabled": false,
+            "dhcp_lease_expires": null,
+            "dhcp_lease_obtained": null,
+            "dhcp_server": null,
+            "dns_domain": null,
+            "dns_domain_suffix_search_order": [
+              "kisters.de"
+            ],
+            "dns_enabled_for_wins_resolution": false,
+            "dns_host_name": "ws-akanuschin2",
+            "dns_server_search_order": null,
+            "domain_dns_registration_enabled": false,
+            "forward_buffer_memory": null,
+            "full_dns_registration_enabled": true,
+            "gateway_cost_metric": null,
+            "igmp_level": null,
+            "index": 8,
+            "interface_index": 9,
+            "ip_address": [
+              "192.168.56.1",
+              "fe80::94f8:2df0:a6c7:10c2"
+            ],
+            "ip_connection_metric": 10,
+            "ip_enabled": true,
+            "ip_filter_security_enabled": false,
+            "ip_port_security_enabled": null,
+            "ip_sec_permit_ip_protocols": [
+
+            ],
+            "ip_sec_permit_tcp_ports": [
+
+            ],
+            "ip_sec_permit_udp_ports": [
+
+            ],
+            "ip_subnet": [
+              "255.255.255.0",
+              "64"
+            ],
+            "ip_use_zero_broadcast": null,
+            "ipx_address": null,
+            "ipx_enabled": null,
+            "ipx_frame_type": null,
+            "ipx_media_type": null,
+            "ipx_network_number": null,
+            "ipx_virtual_net_number": null,
+            "keep_alive_interval": null,
+            "keep_alive_time": null,
+            "mac_address": "0A:00:27:00:00:00",
+            "mtu": null,
+            "num_forward_packets": null,
+            "pmtubh_detect_enabled": null,
+            "pmtu_discovery_enabled": null,
+            "service_name": "VBoxNetAdp",
+            "setting_id": "{C76090D3-5933-498B-A51D-396B931C10A4}",
+            "tcpip_netbios_options": 0,
+            "tcp_max_connect_retransmissions": null,
+            "tcp_max_data_retransmissions": null,
+            "tcp_num_connections": null,
+            "tcp_use_rfc1122_urgent_pointer": null,
+            "tcp_window_size": 64512,
+            "wins_enable_lm_hosts_lookup": true,
+            "wins_host_lookup_file": null,
+            "wins_primary_server": null,
+            "wins_scope_id": "",
+            "wins_secondary_server": null
+          },
+          "instance": {
+            "adapter_type": "Ethernet 802.3",
+            "adapter_type_id": 0,
+            "auto_sense": null,
+            "availability": 3,
+            "caption": "[00000008] VirtualBox Host-Only Ethernet Adapter",
+            "config_manager_error_code": 0,
+            "config_manager_user_config": false,
+            "creation_class_name": "Win32_NetworkAdapter",
+            "description": "VirtualBox Host-Only Ethernet Adapter",
+            "device_id": "8",
+            "error_cleared": null,
+            "error_description": null,
+            "guid": "{C76090D3-5933-498B-A51D-396B931C10A4}",
+            "index": 8,
+            "install_date": null,
+            "installed": true,
+            "interface_index": 9,
+            "last_error_code": null,
+            "mac_address": "0A:00:27:00:00:00",
+            "manufacturer": "Oracle Corporation",
+            "max_number_controlled": 0,
+            "max_speed": null,
+            "name": "VirtualBox Host-Only Ethernet Adapter",
+            "net_connection_id": "VirtualBox Host-Only Network",
+            "net_connection_status": 2,
+            "net_enabled": true,
+            "network_addresses": null,
+            "permanent_address": null,
+            "physical_adapter": true,
+            "pnp_device_id": "ROOT\\NET\\0000",
+            "power_management_capabilities": null,
+            "power_management_supported": false,
+            "product_name": "VirtualBox Host-Only Ethernet Adapter",
+            "service_name": "VBoxNetAdp",
+            "speed": "1000000000",
+            "status": null,
+            "status_info": null,
+            "system_creation_class_name": "Win32_ComputerSystem",
+            "system_name": "WS-AKANUSCHIN2",
+            "time_of_last_reset": "20160826160627.494089+120"
+          },
+          "counters": {
+
+          },
+          "addresses": {
+            "192.168.56.1": {
+              "prefixlen": "24",
+              "netmask": "255.255.255.0",
+              "broadcast": "192.168.56.255",
+              "family": "inet"
+            },
+            "fe80::94f8:2df0:a6c7:10c2": {
+              "prefixlen": "64",
+              "family": "inet6",
+              "scope": "Link"
+            },
+            "0A:00:27:00:00:00": {
+              "family": "lladdr"
+            }
+          },
+          "mtu": null,
+          "type": "Ethernet 802.3",
+          "arp": {
+
+          },
+          "encapsulation": "Ethernet"
+        },
+        "0xa": {
+          "configuration": {
+            "arp_always_source_route": null,
+            "arp_use_ether_snap": null,
+            "caption": "[00000009] VirtualBox Host-Only Ethernet Adapter",
+            "database_path": "%SystemRoot%\\System32\\drivers\\etc",
+            "dead_gw_detect_enabled": null,
+            "default_ip_gateway": null,
+            "default_tos": null,
+            "default_ttl": null,
+            "description": "VirtualBox Host-Only Ethernet Adapter #2",
+            "dhcp_enabled": false,
+            "dhcp_lease_expires": null,
+            "dhcp_lease_obtained": null,
+            "dhcp_server": null,
+            "dns_domain": null,
+            "dns_domain_suffix_search_order": [
+              "kisters.de"
+            ],
+            "dns_enabled_for_wins_resolution": false,
+            "dns_host_name": "ws-akanuschin2",
+            "dns_server_search_order": null,
+            "domain_dns_registration_enabled": false,
+            "forward_buffer_memory": null,
+            "full_dns_registration_enabled": true,
+            "gateway_cost_metric": null,
+            "igmp_level": null,
+            "index": 9,
+            "interface_index": 10,
+            "ip_address": [
+              "192.168.50.1",
+              "fe80::6c89:f078:3b97:abcd"
+            ],
+            "ip_connection_metric": 10,
+            "ip_enabled": true,
+            "ip_filter_security_enabled": false,
+            "ip_port_security_enabled": null,
+            "ip_sec_permit_ip_protocols": [
+
+            ],
+            "ip_sec_permit_tcp_ports": [
+
+            ],
+            "ip_sec_permit_udp_ports": [
+
+            ],
+            "ip_subnet": [
+              "255.255.255.0",
+              "64"
+            ],
+            "ip_use_zero_broadcast": null,
+            "ipx_address": null,
+            "ipx_enabled": null,
+            "ipx_frame_type": null,
+            "ipx_media_type": null,
+            "ipx_network_number": null,
+            "ipx_virtual_net_number": null,
+            "keep_alive_interval": null,
+            "keep_alive_time": null,
+            "mac_address": "0A:00:27:00:00:00",
+            "mtu": null,
+            "num_forward_packets": null,
+            "pmtubh_detect_enabled": null,
+            "pmtu_discovery_enabled": null,
+            "service_name": "VBoxNetAdp",
+            "setting_id": "{AD4D8315-F3CF-4BF4-A7DA-32A70158F346}",
+            "tcpip_netbios_options": 0,
+            "tcp_max_connect_retransmissions": null,
+            "tcp_max_data_retransmissions": null,
+            "tcp_num_connections": null,
+            "tcp_use_rfc1122_urgent_pointer": null,
+            "tcp_window_size": 64512,
+            "wins_enable_lm_hosts_lookup": true,
+            "wins_host_lookup_file": null,
+            "wins_primary_server": null,
+            "wins_scope_id": "",
+            "wins_secondary_server": null
+          },
+          "instance": {
+            "adapter_type": "Ethernet 802.3",
+            "adapter_type_id": 0,
+            "auto_sense": null,
+            "availability": 3,
+            "caption": "[00000009] VirtualBox Host-Only Ethernet Adapter",
+            "config_manager_error_code": 0,
+            "config_manager_user_config": false,
+            "creation_class_name": "Win32_NetworkAdapter",
+            "description": "VirtualBox Host-Only Ethernet Adapter",
+            "device_id": "9",
+            "error_cleared": null,
+            "error_description": null,
+            "guid": "{AD4D8315-F3CF-4BF4-A7DA-32A70158F346}",
+            "index": 9,
+            "install_date": null,
+            "installed": true,
+            "interface_index": 10,
+            "last_error_code": null,
+            "mac_address": "0A:00:27:00:00:00",
+            "manufacturer": "Oracle Corporation",
+            "max_number_controlled": 0,
+            "max_speed": null,
+            "name": "VirtualBox Host-Only Ethernet Adapter #2",
+            "net_connection_id": "VirtualBox Host-Only Network #2",
+            "net_connection_status": 2,
+            "net_enabled": true,
+            "network_addresses": null,
+            "permanent_address": null,
+            "physical_adapter": true,
+            "pnp_device_id": "ROOT\\NET\\0001",
+            "power_management_capabilities": null,
+            "power_management_supported": false,
+            "product_name": "VirtualBox Host-Only Ethernet Adapter",
+            "service_name": "VBoxNetAdp",
+            "speed": "1000000000",
+            "status": null,
+            "status_info": null,
+            "system_creation_class_name": "Win32_ComputerSystem",
+            "system_name": "WS-AKANUSCHIN2",
+            "time_of_last_reset": "20160826160627.494089+120"
+          },
+          "counters": {
+
+          },
+          "addresses": {
+            "192.168.50.1": {
+              "prefixlen": "24",
+              "netmask": "255.255.255.0",
+              "broadcast": "192.168.50.255",
+              "family": "inet"
+            },
+            "fe80::6c89:f078:3b97:abcd": {
+              "prefixlen": "64",
+              "family": "inet6",
+              "scope": "Link"
+            },
+            "0A:00:27:00:00:00": {
+              "family": "lladdr"
+            }
+          },
+          "mtu": null,
+          "type": "Ethernet 802.3",
+          "arp": {
+
+          },
+          "encapsulation": "Ethernet"
+        }
+      },
+      "default_gateway": "10.3.19.1",
+      "default_interface": "0x5"
+    },
+    "counters": {
+      "network": {
+
+      }
+    },
+    "ipaddress": "10.3.19.50",
+    "macaddress": "7C:05:07:0E:C5:5B",
+    "ip6address": "fe80::391f:1d58:9de0:2a07",
+    "os": "windows",
+    "os_version": "6.3.9600",
+    "platform": "windows",
+    "platform_version": "6.3.9600",
+    "platform_family": "windows",
+    "uptime_seconds": 1212995,
+    "uptime": "14 days 00 hours 56 minutes 35 seconds",
+    "virtualization": {
+      "systems": {
+
+      }
+    },
+    "languages": {
+      "c": {
+        "gcc": {
+          "version": "4.8.2",
+          "description": "gcc version 4.8.2 (x86_64-posix-sjlj, built by strawberryperl.com project) \r"
+        }
+      },
+      "java": {
+        "version": "1.8.0_40",
+        "runtime": {
+          "name": "Java(TM) SE Runtime Environment",
+          "build": "1.8.0_40-b25"
+        },
+        "hotspot": {
+          "name": "Java HotSpot(TM) 64-Bit Server VM",
+          "build": "25.40-b25, mixed mode"
+        }
+      },
+      "nodejs": {
+        "version": "0.10.36"
+      },
+      "perl": {
+        "version": "5.20.0",
+        "archname": "MSWin32-x64-multi-thread"
+      },
+      "powershell": {
+        "version": "4.0",
+        "ws_man_stack_version": "3.0",
+        "serialization_version": "1.1.0.1",
+        "clr_version": "4.0.30319.34209",
+        "build_version": "6.3.9600.17400",
+        "compatible_versions": [
+          "1.0",
+          "2.0",
+          "3.0",
+          "4.0"
+        ],
+        "remoting_protocol_version": "2.2"
+      },
+      "ruby": {
+        "platform": "i386-mingw32",
+        "version": "2.1.6",
+        "release_date": "2015-04-13",
+        "target": "i386-pc-mingw32",
+        "target_cpu": "i386",
+        "target_vendor": "pc",
+        "target_os": "mingw32",
+        "host": "i686-pc-mingw32",
+        "host_cpu": "i686",
+        "host_os": "mingw32",
+        "host_vendor": "pc",
+        "bin_dir": "c:/opscode/chefdk/embedded/bin",
+        "ruby_bin": "c:/opscode/chefdk/embedded/bin/ruby",
+        "gems_dir": "c:/opscode/chefdk/embedded/lib/ruby/gems/2.1.0",
+        "gem_bin": "c:/opscode/chefdk/embedded/bin/gem"
+      }
+    },
+    "chef_packages": {
+      "chef": {
+        "version": "12.7.2",
+        "chef_root": "c:/opscode/chefdk/embedded/lib/ruby/gems/2.1.0/gems/chef-12.7.2-universal-mingw32/lib"
+      },
+      "ohai": {
+        "version": "8.10.0",
+        "ohai_root": "c:/opscode/chefdk/embedded/lib/ruby/gems/2.1.0/gems/ohai-8.10.0/lib/ohai"
+      }
+    },
+    "dmi": {
+
+    },
+    "cloud_v2": null,
+    "command": {
+
+    },
+    "hostname": "ws-akanuschin2",
+    "machinename": "WS-AKANUSCHIN2",
+    "fqdn": "ws-akanuschin2.kisters.de",
+    "domain": "kisters.de",
+    "keys": {
+      "ssh": {
+
+      }
+    },
+    "ohai_time": 1473433386.17989,
+    "root_group": "Administratoren",
+    "recipes": [
+      "sqlimport",
+      "sqlimport::default"
+    ],
+    "expanded_run_list": [
+      "sqlimport::default"
+    ],
+    "roles": [
+
+    ],
+    "cookbooks": {
+      "sqlimport": {
+        "version": "0.1.0"
+      }
+    }
+  },
+  "run_list": [
+    "recipe[sqlimport]"
+  ]
+}

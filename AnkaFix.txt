@@ -8,7 +8,8 @@
 # show the installed feautures
    feature:repo-list 
 #remove the prev. feature to be sure.
-   feature:repo-remove  mvn:de.kisters.energy/energy-offer-handling.deploy/0.0.2-SNAPSHOT/xml/features
+   feature:uninstall  energy-offer-handling-default
+   feature:repo-remove  mvn:de.kisters.energy/energy-offer-handling.deploy/0.3.0-SNAPSHOT/xml/features
 #or refresh the feature if the version is up to date
    feature:repo-refresh mvn:de.kisters.energy/energy-offer-handling.deploy/0.3.0-SNAPSHOT/xml/features
    
@@ -26,24 +27,29 @@ ssh karaf@energy-ref-01.kisters.de  -p 8101
 
 -----------------------------local ---------------------------
 
- cd ../../opt/kisters/energy-offer-handling/karaf/etc
+ cd ../../opt/kisters/energy-offer-handling/karaf/
+ pgrep karaf 
+ sudo kill -9 <processID> 
  change to karaf and "sudo bash karaf start" or "sudo bash karaf debug"
  
 #save the configured files to mapped C:\scm\git\AnKaFix\energy-offer-handling\energy-offer-handling.provision.chef\saved_cfg
 karaf/etc$ sudo cp de.kisters.energy.*.cfg /vagrant/saved_cfg
 
+#restore the cfg files
+ sudo cp /vagrant/saved_cfg/de.kisters.energy*.*.cfg .
+
 Entry-point:
 http://ws-akanuschin2.kisters.de:18181/ui/energy/offer/handling/index.html#/offering/basicdata
 
 ----------------------------- update vagrant without destroy -----------------
-#stop VM
-vagrant halt
-
-#compile energy
-energy-offer-handling$ mvn clean install
+generally delete karaf & distribution jars and provision again (the missing details will be created by chef):
+rm -rf /opt/kisters/energy-offer-handling/karaf
+rm -f /opt/kisters/localrepo/energy-offer-handling.deploy.karafdistribution.tar.gz
 
 #save the cfg files
 sudo cp de.kisters.* /vagrant/saved_cfg/
+cd ../../opt/kisters/energy-offer-handling/karaf/etc
+sudo cp de.kisters.* /vagrant/cfg_orig/ .
 
 #delete the prev. dustribution
 cd ../../opt/kisters/localrepo
@@ -51,10 +57,41 @@ sudo rm energy-offer-handling.deploy.karafdistribution.tar.gz
 cd ..
 sudo rm -rf karaf/
 
+#compile energy (the karaf dierctory is created again)
+energy-offer-handling$ mvn clean install
+
+
+#stop VM
+vagrant halt
+
 #update the chef provisioning repository
 fetch & rebase
 
+#start refreshed VM
+vagrant up
+
 #create new distibution
+vagrant provision
+
+--------------------------- update VM is the feature.xml is changed ---------------
+#delete the prev. dustribution
+cd ../../opt/kisters/localrepo
+sudo rm energy-offer-handling.deploy.karafdistribution.tar.gz
+cd ..
+sudo rm -rf karaf/
+
+#compile energy (the karaf dierctory is created again)
+energy-offer-handling$ mvn clean install
+
+#create new distibution
+vagrant provision  (if error , try "berks update")
+
+#restore the cfg files
+ sudo cp /vagrant/saved_cfg/de.kisters.energy*.*.cfg .
+
+Or:
+vagrant halt 
+vagrant up 
 vagrant provision
 
 
@@ -118,6 +155,11 @@ sudo sed -i 's@servicebaseuri=http://energy-ref-01.kisters.de@servicebaseuri=htt
 sudo sed -i 's@assistantservicebaseuri=http://ws-akanuschin2.kisters.de@assistantservicebaseuri=http://energy-ref-01.kisters.de@g' *.padp.rest.impl.cfg
 
 
-
+---------------------------- change bundle start level ---------
+ karaf@root()> bundle:start-level 218
+ 80
+ karaf@root()> bundle:start-level 218 85
+ karaf@root()> bundle:start-level 218
+ 85
 
 

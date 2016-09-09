@@ -1,0 +1,43 @@
+----kill sessions
+begin
+ for sessions in ( select sid, serial# 
+                    from   v$session 
+                    where  username = <%= "'#{node['enetgas']['dbuser']}')" %>
+  loop
+    execute immediate 'alter system kill session '''||sessions.sid||','||sessions.serial#||'''';
+  end loop;
+end;
+/
+---- drop user 
+DROP USER <%= "#{node['enetgas']['dbuser']} CASCADE" %>;
+---- create user
+CREATE USER <%= "#{node['enetgas']['dbuser']}" %>
+  IDENTIFIED BY <%= "\"#{node['enetgas']['pwd']}\"" %>
+  DEFAULT TABLESPACE <%= "#{node['enetgas']['dbuser']}" %>
+  TEMPORARY TABLESPACE TEMP
+  PROFILE DEFAULT
+  ACCOUNT UNLOCK;
+  -- 1 Role for new dbuser 
+  GRANT CONNECT TO <%= "#{node['enetgas']['dbuser']};" %>
+  ALTER USER <%= "#{node['enetgas']['dbuser']}" %> DEFAULT ROLE ALL;
+  -- 13 System Privileges new dbuser
+  GRANT CREATE DATABASE LINK TO <%= "#{node['enetgas']['dbuser']};" %>
+  GRANT CREATE JOB TO <%= "#{node['enetgas']['dbuser']};" %>
+  GRANT CREATE MATERIALIZED VIEW TO <%= "#{node['enetgas']['dbuser']};" %>
+  GRANT CREATE PROCEDURE TO <%= "#{node['enetgas']['dbuser']};" %>
+  GRANT CREATE PUBLIC DATABASE LINK TO <%= "#{node['enetgas']['dbuser']};" %>
+  GRANT CREATE PUBLIC SYNONYM TO <%= "#{node['enetgas']['dbuser']};" %>
+  GRANT CREATE SEQUENCE TO <%= "#{node['enetgas']['dbuser']};" %>
+  GRANT CREATE SESSION TO <%= "#{node['enetgas']['dbuser']};" %>
+  GRANT CREATE SYNONYM TO <%= "#{node['enetgas']['dbuser']};" %>
+  GRANT CREATE TABLE TO <%= "#{node['enetgas']['dbuser']};" %>
+  GRANT CREATE TRIGGER TO <%= "#{node['enetgas']['dbuser']};" %>
+  GRANT CREATE VIEW TO <%= "#{node['enetgas']['dbuser']};" %>
+  GRANT SELECT ANY DICTIONARY TO <%= "#{node['enetgas']['dbuser']};" %>
+  -- 2 Tablespace Quotas for #{node['enetgas']['dbuser']} 
+  ALTER USER <%= "#{node['enetgas']['dbuser']}" %> QUOTA UNLIMITED ON <%= "#{node['enetgas']['dbuser']};" %>
+  ALTER USER <%= "#{node['enetgas']['dbuser']}" %> QUOTA UNLIMITED ON USERS;
+  -- 1 Object Privilege for #{node['enetgas']['dbuser']} 
+    GRANT READ, WRITE ON DIRECTORY DATA_PUMP_DIR TO <%= "#{node['enetgas']['dbuser']};" %>
+commit;
+exit
