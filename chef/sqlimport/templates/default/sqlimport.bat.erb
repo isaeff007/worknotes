@@ -1,0 +1,4 @@
+SQLPLUS <%= "#{node['admin_dbuser']}/#{node['admin_pwd']}@#{node['admin_host']}:#{node['admin_port']}/#{node['admin_instance']}" %>  @<%= @usertoimport%>.sql
+
+impdp <%= @usertoimport %>/<%="#{node['usertoimport']['pwd']}@#{node['admin_host']}:#{node['admin_port']}/#{node['admin_instance']}"%> dumpfile=<%= @usertoimport%>.dmp remap_schema=<%= @usertoimport%>:<%= @usertoimport%> remap_tablespace=<%= @usertoimport%>:<%= @usertoimport%> DIRECTORY=DATA_PUMP_DIR
+

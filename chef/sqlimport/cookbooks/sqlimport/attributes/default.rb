@@ -16,6 +16,9 @@ default['admin_host'] = 'oracle-11g-srv-n'
 default['admin_instance'] =  'BEL49'
 default['admin_port'] = '1521'
 
+#just an array with users to be imported
+default['userstoimport'] = ['ENET_GAS_AUTOMATISIERUNG','ENET_POWER_AUTOMATISIERUNG ','ENET_TRANSFER_AUTOMATISIERUNG ']
+
 
 #default['enetgas']['dbuser'] = 'system'
 default['enetgas']['dbuser'] = 'AKBELVIS4TSM411LB'
@@ -23,6 +26,12 @@ default['enetgas']['pwd'] = '12years'
 
 default['enetpower']['dbuser'] = 'AKBELVIS4TSM411LB'
 default['enetpower']['pwd'] = '12years'
+
+default['enettransfer']['dbuser'] = 'ENET_TRANSFER_AUTOMATISIERUNG'
+default['enettransfer']['pwd'] = '12years'
+
+default['usertoimport']['dbuser'] = node['enettransfer']['dbuser']
+default['usertoimport']['pwd'] = node['enettransfer']['pwd']
 
 
 case node['platform_family']

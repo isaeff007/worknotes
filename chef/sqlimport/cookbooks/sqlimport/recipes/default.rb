@@ -6,29 +6,54 @@
 
 #create the sql script for db users to import
 #includes delete , create , import
-template 'D:\WORK\chef\sqlimport\files\sqlscript.bat' do
-  source 'sqlimport.bat.erb'
-  mode '0755'
-  owner 'root'
-  group 'root'
-end
 
-template 'D:\WORK\chef\sqlimport\files\create_user.sql' do 
-  source 'create_user.sql.erb'
-end
+ #iterate over the enet dbusers
+  #node['userstoimport'].each do |dbuser|
+   # unless dbuser.empty?
+    #      puts "#Importing #{dbuser}..."
+	#	  template "#{node['enet']['files']}/#{dbuser}.sql" do 
+     #         source 'create_user.sql.erb'
+      #    end 		  
+     #end 
+   #end    
+   
+   #set the template variables to create the sql for each user
+   node['userstoimport'].each do |dbuser|    
+          puts "#Importing #{dbuser}..."
+		  template "#{node['enet']['files']}/#{dbuser}.sql" do 
+              source 'create_user.sql.erb'
+			   variables(			   
+                :usertoimport => dbuser 
+               )
+     end 
+   end    
 
-template "#{node['enet']['files']}/create_user_#{node['enetgas']['dbuser']}.sql" do 
+template "#{node['enet']['files']}/#{node['enetgas']['dbuser']}.sql" do 
  source 'create_user.sql.erb'
 end 
 
+ node['userstoimport'].each do |dbuser| 
+  template "#{node['enet']['files']}/import_#{dbuser}.bat" do
+   source 'sqlimport.bat.erb'
+   mode '0755'
+   owner 'root'
+   group 'root'
+   variables(
+     :usertoimport => dbuser 
+            )
+  end
+end
 
+#template "#{node['enet']['files']}/create_user.sql" do 
+ # source 'create_user.sql.erb'
+#end
 
 
 batch "Run_SQL_Files" do  
   cwd "#{node['enet']['files']}"
-  code "sqlscript.bat create_user_#{node['enetgas']['dbuser']}.sql"
-  action:run
-  #action:nothing
+  code "sqlscript.bat #{node['enetgas']['dbuser']}"
+  #action:run
+  action:nothing
   only_if { node['platform'] == 'windows'}
 end
 

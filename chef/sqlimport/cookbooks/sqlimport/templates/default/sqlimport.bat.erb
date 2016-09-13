@@ -1,4 +1,4 @@
 #SQLPLUS AKBELVIS4TSM411X/12years@oracle-11g-srv-n:1521/BEL49
-SQLPLUS <%= "#{node['admin_dbuser']}/#{node['admin_pwd']}@#{node['admin_host']}:#{node['admin_port']}/#{node['admin_instance']} @%1"%>
-pause
+SQLPLUS <%= "#{node['admin_dbuser']}/#{node['admin_pwd']}@#{node['admin_host']}:#{node['admin_port']}/#{node['admin_instance']}" %>  @<%= @usertoimport%>.sql
 
+impdp <%= @usertoimport %>/<%="#{node['usertoimport']['pwd']}@#{node['admin_host']}:#{node['admin_port']}/#{node['admin_instance']}"%> dumpfile=<%= @usertoimport%>.dmp remap_schema=<%= @usertoimport%>:<%= @usertoimport%> remap_tablespace=<%= @usertoimport%>:<%= @usertoimport%> DIRECTORY=DATA_PUMP_DIR

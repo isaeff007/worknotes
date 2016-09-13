@@ -1,0 +1,43 @@
+----kill sessions
+begin
+ for sessions in ( select sid, serial# 
+                    from   v$session 
+                    where  username = '<%= @usertoimport %>')
+  loop
+    execute immediate 'alter system kill session '''||sessions.sid||','||sessions.serial#||'''';
+  end loop;
+end;
+/
+---- drop user 
+DROP USER <%= @usertoimport%> CASCADE;
+---- create user
+CREATE USER <%= @usertoimport %>
+  IDENTIFIED BY <%= "\"#{node['enetgas']['pwd']}\"" %>
+  DEFAULT TABLESPACE <%= @usertoimport %>  
+  TEMPORARY TABLESPACE TEMP
+  PROFILE DEFAULT
+  ACCOUNT UNLOCK;
+  -- 1 Role for new dbuser 
+  GRANT CONNECT TO <%= @usertoimport %>;
+  ALTER USER <%= "#{node['enetgas']['dbuser']}" %> DEFAULT ROLE ALL;
+  -- 13 System Privileges new dbuser
+  GRANT CREATE DATABASE LINK TO <%= @usertoimport %>;
+  GRANT CREATE JOB TO <%= @usertoimport %>;
+  GRANT CREATE MATERIALIZED VIEW TO <%= @usertoimport %>;
+  GRANT CREATE PROCEDURE TO <%= @usertoimport %>;
+  GRANT CREATE PUBLIC DATABASE LINK TO <%= @usertoimport %>;
+  GRANT CREATE PUBLIC SYNONYM TO <%= @usertoimport %>;
+  GRANT CREATE SEQUENCE TO <%= @usertoimport %>;
+  GRANT CREATE SESSION TO <%= @usertoimport %>;
+  GRANT CREATE SYNONYM TO <%= @usertoimport %>;
+  GRANT CREATE TABLE TO <%= @usertoimport %>;
+  GRANT CREATE TRIGGER TO <%= @usertoimport %>;
+  GRANT CREATE VIEW TO <%= @usertoimport %>;
+  GRANT SELECT ANY DICTIONARY TO <%= @usertoimport %>;
+  -- 2 Tablespace Quotas for created user
+  ALTER USER <%= @usertoimport %> QUOTA UNLIMITED ON <%= @usertoimport %>;
+  ALTER USER <%= @usertoimport %> QUOTA UNLIMITED ON USERS;
+  -- 1 Object Privilege for created user
+    GRANT READ, WRITE ON DIRECTORY DATA_PUMP_DIR TO <%= @usertoimport %>;
+commit;
+exit

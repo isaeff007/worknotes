@@ -11,12 +11,25 @@
     "admin_host": "oracle-11g-srv-n",
     "admin_instance": "BEL49",
     "admin_port": "1521",
+    "userstoimport": [
+      "ENET_GAS_AUTOMATISIERUNG",
+      "ENET_POWER_AUTOMATISIERUNG ",
+      "ENET_TRANSFER_AUTOMATISIERUNG "
+    ],
     "enetgas": {
       "dbuser": "AKBELVIS4TSM411LB",
       "pwd": "12years"
     },
     "enetpower": {
       "dbuser": "AKBELVIS4TSM411LB",
+      "pwd": "12years"
+    },
+    "enettransfer": {
+      "dbuser": "ENET_TRANSFER_AUTOMATISIERUNG",
+      "pwd": "12years"
+    },
+    "usertoimport": {
+      "dbuser": "ENET_TRANSFER_AUTOMATISIERUNG",
       "pwd": "12years"
     },
     "enet": {
@@ -43,17 +56,17 @@
     "filesystem": {
       "C:": {
         "kb_size": 249691295,
-        "kb_available": 92374044,
-        "kb_used": 157317251,
-        "percent_used": 63,
+        "kb_available": 92397641,
+        "kb_used": 157293654,
+        "percent_used": 62,
         "mount": "C:",
         "fs_type": "ntfs",
         "volume_name": ""
       },
       "D:": {
         "kb_size": 500101541,
-        "kb_available": 381299929,
-        "kb_used": 118801612,
+        "kb_available": 381232058,
+        "kb_used": 118869483,
         "percent_used": 23,
         "mount": "D:",
         "fs_type": "ntfs",
@@ -90,13 +103,13 @@
         "distributed": false,
         "encryption_level": 256,
         "foreground_application_boost": 2,
-        "free_physical_memory": "6157528",
-        "free_space_in_paging_files": "2124000",
-        "free_virtual_memory": "8595308",
+        "free_physical_memory": "6315820",
+        "free_space_in_paging_files": "2063916",
+        "free_virtual_memory": "8536424",
         "install_date": "20140808150643.000000+120",
         "large_system_cache": null,
         "last_boot_up_time": "20160826160627.494089+120",
-        "local_date_time": "20160909170301.995000+120",
+        "local_date_time": "20160912161354.841000+120",
         "locale": "0407",
         "manufacturer": "Microsoft Corporation",
         "max_number_of_processes": -1,
@@ -215,10 +228,10 @@
     "memory": {
       "swap": {
         "total": "2490368kB",
-        "free": "2124000kB"
+        "free": "2063916kB"
       },
       "total": "16421892kB",
-      "free": "6157552kB"
+      "free": "6315792kB"
     },
     "network": {
       "interfaces": {
@@ -236,8 +249,8 @@
             "default_ttl": null,
             "description": "Intel(R) Ethernet Connection I217-LM",
             "dhcp_enabled": true,
-            "dhcp_lease_expires": "20160915160708.000000+120",
-            "dhcp_lease_obtained": "20160907160708.000000+120",
+            "dhcp_lease_expires": "20160919160708.000000+120",
+            "dhcp_lease_obtained": "20160911160708.000000+120",
             "dhcp_server": "192.168.52.4",
             "dns_domain": "kisters.de",
             "dns_domain_suffix_search_order": [
@@ -1122,8 +1135,8 @@
     "platform": "windows",
     "platform_version": "6.3.9600",
     "platform_family": "windows",
-    "uptime_seconds": 1212995,
-    "uptime": "14 days 00 hours 56 minutes 35 seconds",
+    "uptime_seconds": 1469249,
+    "uptime": "17 days 00 hours 07 minutes 29 seconds",
     "virtualization": {
       "systems": {
 
@@ -1212,7 +1225,7 @@
 
       }
     },
-    "ohai_time": 1473433386.17989,
+    "ohai_time": 1473689640.3988008,
     "root_group": "Administratoren",
     "recipes": [
       "sqlimport",
